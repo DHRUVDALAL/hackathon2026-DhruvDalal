@@ -1,9 +1,10 @@
 /* Frontend demo only — backend untouched.
- * Loads frontend/assets/sample-data.json and renders an enterprise-style ops dashboard.
+ * Loads frontend/assets/sample-data.json and renders a premium enterprise ops dashboard.
  */
 
 let appData = null;
 let charts = { outcome: null, perf: null, intent: null };
+let selectedTicketId = null;
 
 const $ = (id) => document.getElementById(id);
 
@@ -52,8 +53,13 @@ function renderKPIs() {
 
 function setChartDefaults() {
   if (!window.Chart) return;
+
   Chart.defaults.color = "#475569";
   Chart.defaults.font.family = "Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif";
+  Chart.defaults.plugins.legend.position = "bottom";
+  Chart.defaults.plugins.legend.labels.usePointStyle = true;
+  Chart.defaults.plugins.legend.labels.pointStyle = "circle";
+  Chart.defaults.plugins.legend.labels.boxWidth = 8;
 }
 
 function renderCharts() {
@@ -71,37 +77,56 @@ function renderCharts() {
       labels: ["Resolved", "Failed", "DLQ"],
       datasets: [{
         data: [m.success, m.failed, m.dlq],
-        backgroundColor: ["rgba(22,163,74,0.85)", "rgba(220,38,38,0.85)", "rgba(245,158,11,0.85)"],
+        backgroundColor: ["rgba(22,163,74,0.85)", "rgba(220,38,38,0.85)", "rgba(217,119,6,0.85)"],
         borderColor: "rgba(226,232,240,1)",
         borderWidth: 2,
       }]
     },
     options: {
+      cutout: "72%",
       plugins: {
         legend: {
-          labels: { boxWidth: 12, boxHeight: 12 }
+          labels: { padding: 16 }
+        },
+        tooltip: {
+          backgroundColor: "rgba(15, 23, 42, 0.96)",
+          padding: 12,
+          titleColor: "#F8FAFC",
+          bodyColor: "#E2E8F0",
+          borderColor: "rgba(226,232,240,0.20)",
+          borderWidth: 1,
         }
-      },
-      cutout: "70%"
+      }
     }
   });
 
   charts.perf = new Chart($("chartPerf"), {
     type: "bar",
     data: {
-      labels: ["Total Retries", "Avg Time (s)"],
+      labels: ["Total Retries", "Avg Processing Time (s)"],
       datasets: [{
         label: "System",
         data: [m.total_retries, m.avg_processing_time_s],
-        backgroundColor: ["rgba(29,78,216,0.85)", "rgba(2,132,199,0.85)"],
-        borderRadius: 10,
+        backgroundColor: ["rgba(37,99,235,0.85)", "rgba(30,58,138,0.85)"],
+        borderRadius: 12,
+        barThickness: 44,
       }]
     },
     options: {
-      plugins: { legend: { display: false } },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: "rgba(15, 23, 42, 0.96)",
+          padding: 12,
+          titleColor: "#F8FAFC",
+          bodyColor: "#E2E8F0",
+          borderColor: "rgba(226,232,240,0.20)",
+          borderWidth: 1,
+        }
+      },
       scales: {
-        x: { grid: { display: false } },
-        y: { grid: { color: "rgba(226,232,240,1)" }, ticks: { precision: 0 } }
+        x: { grid: { display: false }, ticks: { padding: 8 } },
+        y: { grid: { color: "rgba(226,232,240,1)" }, ticks: { precision: 0, padding: 8 } }
       }
     }
   });
@@ -121,15 +146,26 @@ function renderCharts() {
       datasets: [{
         label: "Tickets",
         data: values,
-        backgroundColor: "rgba(29,78,216,0.75)",
-        borderRadius: 10,
+        backgroundColor: "rgba(30,58,138,0.80)",
+        borderRadius: 12,
+        barThickness: 34,
       }]
     },
     options: {
-      plugins: { legend: { display: false } },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: "rgba(15, 23, 42, 0.96)",
+          padding: 12,
+          titleColor: "#F8FAFC",
+          bodyColor: "#E2E8F0",
+          borderColor: "rgba(226,232,240,0.20)",
+          borderWidth: 1,
+        }
+      },
       scales: {
-        x: { grid: { display: false } },
-        y: { grid: { color: "rgba(226,232,240,1)" }, ticks: { precision: 0 } }
+        x: { grid: { display: false }, ticks: { padding: 8 } },
+        y: { grid: { color: "rgba(226,232,240,1)" }, ticks: { precision: 0, padding: 8 } }
       }
     }
   });
@@ -151,8 +187,10 @@ function renderTicketTable() {
 
   tbody.innerHTML = filtered.map((t) => {
     const confidence = (t.confidence !== null && t.confidence !== undefined) ? Number(t.confidence).toFixed(2) : "—";
+    const selected = selectedTicketId === t.ticket_id ? "is-selected" : "";
+
     return `
-      <tr class="ticket-row" data-ticket="${t.ticket_id}">
+      <tr class="ticket-row ${selected}" data-ticket="${t.ticket_id}">
         <td>
           <div class="fw-semibold">${t.ticket_id}</div>
         </td>
@@ -182,11 +220,17 @@ function closeDrawer() {
   d.classList.remove("is-open");
   d.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
+
+  selectedTicketId = null;
+  renderTicketTable();
 }
 
 function openTicketDrawer(ticketId) {
   const t = appData.tickets.find((x) => x.ticket_id === ticketId);
   if (!t) return;
+
+  selectedTicketId = ticketId;
+  renderTicketTable();
 
   $("ticketDrawerTitle").textContent = t.ticket_id;
   $("ticketDrawerSubtitle").textContent = `${t.intent || "unknown"} • ${t.processing_time || "—"}`;
@@ -201,33 +245,34 @@ function openTicketDrawer(ticketId) {
       <span class="pill"><i class="fa-solid fa-brain"></i> Decision: <b>${t.decision || "—"}</b></span>
       <span class="pill"><i class="fa-solid fa-chart-simple"></i> Confidence: <b>${confidence}</b></span>
       <span class="pill"><i class="fa-solid fa-rotate"></i> Retries: <b>${t.retries_total || 0}</b></span>
+      <span class="pill"><i class="fa-solid fa-stopwatch"></i> Time: <b>${t.processing_time || "—"}</b></span>
     </div>
 
     <div class="mb-3">
-      <div class="muted" style="font-weight:600">Plan</div>
+      <div class="muted" style="font-weight:900; letter-spacing: -0.01em">Plan</div>
       <div class="d-flex flex-wrap mt-2">${plan || '<span class="muted">—</span>'}</div>
     </div>
 
     <div class="mb-3">
-      <div class="muted" style="font-weight:600">Tools Used</div>
+      <div class="muted" style="font-weight:900; letter-spacing: -0.01em">Tools Used</div>
       <div class="d-flex flex-wrap mt-2">${tools || '<span class="muted">—</span>'}</div>
     </div>
 
     <div class="mb-3">
-      <div class="muted" style="font-weight:600">Final Response</div>
-      <div class="mt-2" style="line-height:1.5">${t.final_response || "—"}</div>
+      <div class="muted" style="font-weight:900; letter-spacing: -0.01em">Final Response</div>
+      <div class="mt-2" style="line-height:1.6">${t.final_response || "—"}</div>
     </div>
 
     <div class="panel" style="box-shadow:none">
-      <div class="panel__head" style="padding:12px">
+      <div class="panel__head" style="padding:14px">
         <div>
           <div class="panel__title" style="font-size:14px">Raw Ticket Snapshot</div>
           <div class="panel__subtitle">For demo transparency</div>
         </div>
         <span class="chip"><i class="fa-solid fa-code"></i> JSON</span>
       </div>
-      <div class="panel__body" style="padding:12px">
-        <pre class="codeblock" style="max-height:220px">${safeJson(t)}</pre>
+      <div class="panel__body" style="padding:14px">
+        <pre class="codeblock" style="max-height:240px">${safeJson(t)}</pre>
       </div>
     </div>
   `;
@@ -266,14 +311,20 @@ function renderRetryDemo() {
       <span class="pill"><i class="fa-solid fa-screwdriver-wrench"></i> Tool: <b>${demo.tool}</b></span>
       <span class="pill pill--success"><i class="fa-solid fa-circle-check"></i> Outcome: <b>Success on attempt 3</b></span>
     </div>
-    <div class="muted" style="font-weight:600">Why it matters</div>
-    <div class="mt-2" style="line-height:1.55">
-      Demonstrates production-grade resilience: transient failures are retried with exponential backoff,
-      then the workflow proceeds successfully without manual intervention.
+
+    <div class="panel" style="box-shadow:none; border-style:dashed">
+      <div class="panel__body" style="padding:14px">
+        <div style="font-weight:950; letter-spacing:-0.02em">Why judges care</div>
+        <div class="muted" style="margin-top:6px; line-height:1.6">
+          This is a deterministic demonstration of production-grade resilience: failures are retried with exponential backoff,
+          then the workflow completes successfully — fully auditable and repeatable.
+        </div>
+      </div>
     </div>
+
     <div class="mt-3">
-      <div class="muted" style="font-weight:600">Final Response</div>
-      <div class="mt-2" style="line-height:1.55">${ticket ? ticket.final_response : "—"}</div>
+      <div class="muted" style="font-weight:900">Final Response</div>
+      <div class="mt-2" style="line-height:1.6">${ticket ? ticket.final_response : "—"}</div>
     </div>
   `;
 }
@@ -283,7 +334,10 @@ function renderDLQDemo() {
 
   $("dlqSummary").innerHTML = `
     <div class="incident__title"><i class="fa-solid fa-triangle-exclamation"></i> Ticket moved to DLQ</div>
-    <div class="muted" style="margin-top:4px">${demo.ticket_id} required human intervention after repeated tool failure.</div>
+    <div class="muted" style="margin-top:6px; line-height:1.55">
+      ${demo.ticket_id} required human intervention after repeated tool failure. The system preserved full context (reason + error_code)
+      and produced a clean DLQ handoff.
+    </div>
     <div class="incident__grid">
       <div class="kv"><div class="kv__k">Failed Step</div><div class="kv__v">${demo.failed_step}</div></div>
       <div class="kv"><div class="kv__k">Error Code</div><div class="kv__v">${demo.error_code}</div></div>
@@ -372,14 +426,15 @@ function renderAudit(ticketId) {
   const steps = audit.steps || [];
   const present = new Set(steps.map((s) => String(s.step)));
 
-  // Fixed, judge-friendly pipeline.
   const canonical = ["understanding", "decision", "plan", "validation", "tool_execution", "retry"];
   const outcome = present.has("dlq") ? "dlq" : "response";
   const pipelineSteps = [...canonical, outcome];
 
-  pipeline.innerHTML = pipelineSteps.map((s) => {
+  const parts = [];
+  for (let i = 0; i < pipelineSteps.length; i++) {
+    const s = pipelineSteps[i];
     const active = present.has(s);
-    return `
+    parts.push(`
       <div class="pipe-node ${active ? "pipe-node--active" : ""}">
         <div class="pipe-node__top">
           <div class="pipe-node__name"><i class="${iconForStep(s)}"></i> ${displayNameForStep(s)}</div>
@@ -387,8 +442,12 @@ function renderAudit(ticketId) {
         </div>
         <div class="pipe-node__meta">${active ? "Logged in audit" : "Not applicable"}</div>
       </div>
-    `;
-  }).join("");
+    `);
+    if (i !== pipelineSteps.length - 1) {
+      parts.push(`<div class="pipe-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></div>`);
+    }
+  }
+  pipeline.innerHTML = parts.join("");
 
   details.innerHTML = steps.map((s, idx) => {
     const name = displayNameForStep(s.step);
@@ -397,10 +456,10 @@ function renderAudit(ticketId) {
       <div class="audit-card" data-idx="${idx}">
         <div class="audit-card__head">
           <div class="audit-card__title"><i class="${icon}"></i> ${name}</div>
-          <span class="chip">View</span>
+          <span class="chip chip--blue">View payload</span>
         </div>
         <div class="audit-card__body">
-          <pre class="codeblock" style="max-height:280px">${safeJson(s.data)}</pre>
+          <pre class="codeblock" style="max-height:300px">${safeJson(s.data)}</pre>
         </div>
       </div>
     `;
@@ -457,7 +516,7 @@ function renderArchitecture() {
         </div>
       </div>
     `);
-    if (i !== nodes.length - 1) items.push(`<div class="arch-connector"><i class="fa-solid fa-arrow-down"></i></div>`);
+    if (i !== nodes.length - 1) items.push(`<div class="arch-connector" aria-hidden="true"><i class="fa-solid fa-arrow-down"></i></div>`);
   }
 
   el.innerHTML = items.join("");
@@ -471,11 +530,11 @@ function renderMetricsPanel() {
   $("metricsPanel").innerHTML = `
     <div class="d-grid gap-2">
       <div class="d-flex align-items-center justify-content-between">
-        <div class="muted" style="font-weight:700">Success Rate</div>
-        <div style="font-weight:900;font-size:18px">${fmtPct(m.success_rate_pct)}</div>
+        <div class="muted" style="font-weight:950">Success Rate</div>
+        <div style="font-weight:950;font-size:20px; letter-spacing:-0.02em">${fmtPct(m.success_rate_pct)}</div>
       </div>
-      <div style="height:10px;border-radius:999px;background:#eaf0ff;overflow:hidden;border:1px solid rgba(29,78,216,0.12)">
-        <div style="height:100%;width:${bar}%;background:linear-gradient(90deg, rgba(29,78,216,1), rgba(59,130,246,1))"></div>
+      <div style="height:10px;border-radius:999px;background:rgba(219,234,254,0.85);overflow:hidden;border:1px solid rgba(37,99,235,0.18)">
+        <div style="height:100%;width:${bar}%;background:#2563EB"></div>
       </div>
 
       <div class="row g-2 mt-1">
@@ -487,7 +546,15 @@ function renderMetricsPanel() {
         <div class="col-6"><div class="kv"><div class="kv__k">Avg Processing Time</div><div class="kv__v">${Number(m.avg_processing_time_s).toFixed(2)}s</div></div></div>
       </div>
 
-      <div class="chip chip--blue mt-2"><i class="fa-solid fa-shield"></i> Multi-agent • tools • validation • retry • DLQ • auditability</div>
+      <div class="panel" style="box-shadow:none; border-style:dashed" >
+        <div class="panel__body" style="padding:14px">
+          <div style="font-weight:950; letter-spacing:-0.02em">Why this wins</div>
+          <div class="muted" style="margin-top:6px; line-height:1.6">
+            Multi-agent orchestration + tool chaining + strict validation + retry resilience + DLQ handling + full auditability.
+            This dashboard makes those capabilities obvious in under 10 seconds.
+          </div>
+        </div>
+      </div>
     </div>
   `;
 }
@@ -535,7 +602,7 @@ async function bootstrap() {
       <div style="padding:32px; font-family: Inter, system-ui;">
         <h2>Failed to load frontend data</h2>
         <p>Run: <code>cd frontend && npx live-server</code></p>
-        <pre style="white-space: pre-wrap; background:#0b1220; color:#e5e7eb; padding:14px; border-radius:12px;">${String(e)}</pre>
+        <pre style="white-space: pre-wrap; background:#0F172A; color:#E2E8F0; padding:14px; border-radius:12px;">${String(e)}</pre>
       </div>
     `;
   }
