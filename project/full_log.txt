@@ -1,0 +1,2004 @@
+[TKT-004] [STEP] understanding → {"intent": "refund_request", "order_id": "ORD-1004", "has_order": true}
+[TKT-004] [STEP] order_lookup → {"order_id": "ORD-1004", "order_found": true}
+[TKT-004] [STEP] decision → {"action": "initiate_exchange", "reason": ["Customer received wrong item."], "confidence": 0.9}
+[TKT-004] [STEP] decision → initiate_exchange (confidence: 0.90)
+[TKT-004] [STEP] plan → ["get_order", "get_product", "send_reply"]
+[TKT-004] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}
+[TKT-004] [STEP] validation → {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}
+[TKT-004] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-004] [STEP] tool_execution → {"tools_used": ["get_order", "get_product", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-004] [STEP] response → {"message": "It looks like you received the wrong item. We’ll arrange an exchange or provide a refund if needed."}
+[AUDIT] {"ticket_id": "TKT-004", "intent": "refund_request", "final_response": "It looks like you received the wrong item. We’ll arrange an exchange or provide a refund if needed.", "plan": ["get_order", "get_product", "send_reply"], "execution": {"tools_used": ["get_order", "get_product", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "refund_request", "order_id": "ORD-1004", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-1004", "order_found": true}}, {"step": "decision", "data": {"action": "initiate_exchange", "reason": ["Customer received wrong item."], "confidence": 0.9}}, {"step": "plan", "data": ["get_order", "get_product", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}}, {"step": "validation", "data": {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_product", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "It looks like you received the wrong item. We’ll arrange an exchange or provide a refund if needed."}}], "decision": {"action": "initiate_exchange", "reason": ["Customer received wrong item."], "confidence": 0.9}, "tools_used": ["get_order", "get_product", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.44s"}
+[TKT-005] [STEP] understanding → {"intent": "return_request", "order_id": "ORD-1005", "has_order": true}
+[TKT-005] [STEP] order_lookup → {"order_id": "ORD-1005", "order_found": true}
+[TKT-005] [STEP] decision → {"action": "approve_return_exception", "reason": ["Return window expired, but VIP exception applies."], "confidence": 0.95}
+[TKT-005] [STEP] decision → approve_return_exception (confidence: 0.95)
+[TKT-005] [STEP] plan → ["get_order", "get_customer", "send_reply"]
+[TKT-005] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}
+[TKT-005] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": true}}
+[TKT-005] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-005] [STEP] tool_execution → {"tools_used": ["get_order", "get_customer", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-005] [STEP] response → {"message": "We can make an exception and approve this return."}
+[AUDIT] {"ticket_id": "TKT-005", "intent": "return_request", "final_response": "We can make an exception and approve this return.", "plan": ["get_order", "get_customer", "send_reply"], "execution": {"tools_used": ["get_order", "get_customer", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "return_request", "order_id": "ORD-1005", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-1005", "order_found": true}}, {"step": "decision", "data": {"action": "approve_return_exception", "reason": ["Return window expired, but VIP exception applies."], "confidence": 0.95}}, {"step": "plan", "data": ["get_order", "get_customer", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": true}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_customer", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "We can make an exception and approve this return."}}], "decision": {"action": "approve_return_exception", "reason": ["Return window expired, but VIP exception applies."], "confidence": 0.95}, "tools_used": ["get_order", "get_customer", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.50s"}
+[TKT-002] [STEP] understanding → {"intent": "refund_request", "order_id": "ORD-1002", "has_order": true}
+[TKT-002] [STEP] order_lookup → {"order_id": "ORD-1002", "order_found": true}
+[TKT-002] [STEP] decision → {"action": "reject_return", "reason": ["Return window expired."], "confidence": 0.9}
+[TKT-002] [STEP] decision → reject_return (confidence: 0.90)
+[TKT-002] [STEP] plan → ["get_order", "get_product", "send_reply"]
+[TKT-002] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}
+[TKT-002] [STEP] validation → {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}
+[TKT-002] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-002] [STEP] tool_execution → {"tools_used": ["get_order", "get_product", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-002] [STEP] response → {"message": "This item is outside the return window and cannot be returned."}
+[AUDIT] {"ticket_id": "TKT-002", "intent": "refund_request", "final_response": "This item is outside the return window and cannot be returned.", "plan": ["get_order", "get_product", "send_reply"], "execution": {"tools_used": ["get_order", "get_product", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "refund_request", "order_id": "ORD-1002", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-1002", "order_found": true}}, {"step": "decision", "data": {"action": "reject_return", "reason": ["Return window expired."], "confidence": 0.9}}, {"step": "plan", "data": ["get_order", "get_product", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}}, {"step": "validation", "data": {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_product", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "This item is outside the return window and cannot be returned."}}], "decision": {"action": "reject_return", "reason": ["Return window expired."], "confidence": 0.9}, "tools_used": ["get_order", "get_product", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.54s"}
+[TKT-003] [STEP] understanding → {"intent": "refund_request", "order_id": "ORD-1003", "has_order": true}
+[TKT-003] [STEP] order_lookup → {"order_id": "ORD-1003", "order_found": true}
+[TKT-003] [STEP] decision → {"action": "escalate_warranty", "reason": ["Return window expired but warranty is still active."], "confidence": 0.9}
+[TKT-003] [STEP] decision → escalate_warranty (confidence: 0.90)
+[TKT-003] [STEP] plan → ["get_order", "get_product", "escalate_case", "send_reply"]
+[TKT-003] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}
+[TKT-003] [STEP] validation → {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}
+[TKT-003] [STEP] validation → {"tool": "escalate_case", "valid": true, "error": null, "result": {"status": "escalated"}}
+[TKT-003] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-003] [STEP] tool_execution → {"tools_used": ["get_order", "get_product", "escalate_case", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-003] [STEP] response → {"message": "This appears to be a warranty issue — I’m escalating it to our support team."}
+[AUDIT] {"ticket_id": "TKT-003", "intent": "refund_request", "final_response": "This appears to be a warranty issue — I’m escalating it to our support team.", "plan": ["get_order", "get_product", "escalate_case", "send_reply"], "execution": {"tools_used": ["get_order", "get_product", "escalate_case", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "refund_request", "order_id": "ORD-1003", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-1003", "order_found": true}}, {"step": "decision", "data": {"action": "escalate_warranty", "reason": ["Return window expired but warranty is still active."], "confidence": 0.9}}, {"step": "plan", "data": ["get_order", "get_product", "escalate_case", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}}, {"step": "validation", "data": {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}}, {"step": "validation", "data": {"tool": "escalate_case", "valid": true, "error": null, "result": {"status": "escalated"}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_product", "escalate_case", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "This appears to be a warranty issue — I’m escalating it to our support team."}}], "decision": {"action": "escalate_warranty", "reason": ["Return window expired but warranty is still active."], "confidence": 0.9}, "tools_used": ["get_order", "get_product", "escalate_case", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.69s"}
+[TKT-001] [STEP] understanding → {"intent": "refund_request", "order_id": "ORD-1001", "has_order": true}
+[TKT-001] [STEP] order_lookup → {"order_id": "ORD-1001", "order_found": true}
+[TKT-001] [STEP] decision → {"action": "escalate_case", "reason": ["Repeated refund requests detected"], "confidence": 0.9}
+[TKT-001] [STEP] decision → escalate_case (confidence: 0.90)
+[TKT-001] [STEP] plan → ["get_order", "get_customer", "escalate_case", "send_reply"]
+[TKT-001] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}
+[TKT-001] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": true}}
+[TKT-001] [STEP] validation → {"tool": "escalate_case", "valid": true, "error": null, "result": {"status": "escalated"}}
+[TKT-001] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-001] [STEP] tool_execution → {"tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-001] [STEP] response → {"message": "Thanks for reaching out — I’m reviewing your request."}
+[AUDIT] {"ticket_id": "TKT-001", "intent": "refund_request", "final_response": "Thanks for reaching out — I’m reviewing your request.", "plan": ["get_order", "get_customer", "escalate_case", "send_reply"], "execution": {"tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "refund_request", "order_id": "ORD-1001", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-1001", "order_found": true}}, {"step": "decision", "data": {"action": "escalate_case", "reason": ["Repeated refund requests detected"], "confidence": 0.9}}, {"step": "plan", "data": ["get_order", "get_customer", "escalate_case", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": true}}}, {"step": "validation", "data": {"tool": "escalate_case", "valid": true, "error": null, "result": {"status": "escalated"}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "Thanks for reaching out — I’m reviewing your request."}}], "decision": {"action": "escalate_case", "reason": ["Repeated refund requests detected"], "confidence": 0.9}, "tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.83s"}
+[TKT-006] [STEP] understanding → {"intent": "cancel_request", "order_id": null, "has_order": false}
+[TKT-006] [STEP] order_lookup → {"order_id": null, "order_found": false}
+[TKT-006] [STEP] decision → {"action": "ask_clarification", "reason": ["Missing order_id; need order ID to proceed."], "confidence": 0.75}
+[TKT-006] [STEP] decision → ask_clarification (confidence: 0.75)
+[TKT-006] [STEP] plan → ["get_customer", "get_order", "send_reply"]
+[TKT-006] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}
+[TKT-006] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": false}}
+[TKT-006] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-006] [STEP] tool_execution → {"tools_used": ["get_customer", "get_order", "send_reply"], "results": [{"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "get_order", "tool_used": "get_order", "result": {"order_found": false}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-006] [STEP] response → {"message": "Please provide your order ID so I can assist you."}
+[AUDIT] {"ticket_id": "TKT-006", "intent": "cancel_request", "final_response": "Please provide your order ID so I can assist you.", "plan": ["get_customer", "get_order", "send_reply"], "execution": {"tools_used": ["get_customer", "get_order", "send_reply"], "results": [{"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "get_order", "tool_used": "get_order", "result": {"order_found": false}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "cancel_request", "order_id": null, "has_order": false}}, {"step": "order_lookup", "data": {"order_id": null, "order_found": false}}, {"step": "decision", "data": {"action": "ask_clarification", "reason": ["Missing order_id; need order ID to proceed."], "confidence": 0.75}}, {"step": "plan", "data": ["get_customer", "get_order", "send_reply"]}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": false}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_customer", "get_order", "send_reply"], "results": [{"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "get_order", "tool_used": "get_order", "result": {"order_found": false}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "Please provide your order ID so I can assist you."}}], "decision": {"action": "ask_clarification", "reason": ["Missing order_id; need order ID to proceed."], "confidence": 0.75}, "tools_used": ["get_customer", "get_order", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.42s"}
+[TKT-008] [STEP] understanding → {"intent": "unknown", "order_id": "ORD-1008", "has_order": true}
+[TKT-008] [STEP] order_lookup → {"order_id": "ORD-1008", "order_found": true}
+[TKT-008] [STEP] decision → {"action": "approve_refund", "reason": ["defective item"], "confidence": 0.9}
+[TKT-008] [STEP] decision → approve_refund (confidence: 0.90)
+[TKT-008] [STEP] plan → ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"]
+[TKT-008] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}
+[TKT-008] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": true}}
+[TKT-008] [STEP] validation → {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}
+[TKT-008] [STEP] validation → {"tool": "check_refund_eligibility", "valid": true, "error": null, "result": {"eligible": true, "reason": "Within return window"}}
+[TKT-008] [STEP] validation → {"tool": "issue_refund", "valid": true, "error": null, "result": {"status": "success", "refund_amount": 44.99}}
+[TKT-008] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-008] [STEP] tool_execution → {"tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "check_refund_eligibility", "tool_used": "check_refund_eligibility", "result": {"eligible": true, "reason": "Within return window"}}, {"step": "issue_refund", "tool_used": "issue_refund", "result": {"status": "success", "refund_amount": 44.99}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-008] [STEP] response → {"message": "We’re sorry about the issue — your item qualifies for a refund."}
+[AUDIT] {"ticket_id": "TKT-008", "intent": "unknown", "final_response": "We’re sorry about the issue — your item qualifies for a refund.", "plan": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "execution": {"tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "check_refund_eligibility", "tool_used": "check_refund_eligibility", "result": {"eligible": true, "reason": "Within return window"}}, {"step": "issue_refund", "tool_used": "issue_refund", "result": {"status": "success", "refund_amount": 44.99}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "unknown", "order_id": "ORD-1008", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-1008", "order_found": true}}, {"step": "decision", "data": {"action": "approve_refund", "reason": ["defective item"], "confidence": 0.9}}, {"step": "plan", "data": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": true}}}, {"step": "validation", "data": {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}}, {"step": "validation", "data": {"tool": "check_refund_eligibility", "valid": true, "error": null, "result": {"eligible": true, "reason": "Within return window"}}}, {"step": "validation", "data": {"tool": "issue_refund", "valid": true, "error": null, "result": {"status": "success", "refund_amount": 44.99}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "check_refund_eligibility", "tool_used": "check_refund_eligibility", "result": {"eligible": true, "reason": "Within return window"}}, {"step": "issue_refund", "tool_used": "issue_refund", "result": {"status": "success", "refund_amount": 44.99}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "We’re sorry about the issue — your item qualifies for a refund."}}], "decision": {"action": "approve_refund", "reason": ["defective item"], "confidence": 0.9}, "tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.44s"}
+[TKT-009] [STEP] understanding → {"intent": "refund_request", "order_id": "ORD-1009", "has_order": true}
+[TKT-009] [STEP] order_lookup → {"order_id": "ORD-1009", "order_found": true}
+[TKT-009] [STEP] decision → {"action": "inform_already_refunded", "reason": ["Order refund_status is already 'refunded'."], "confidence": 0.9}
+[TKT-009] [STEP] decision → inform_already_refunded (confidence: 0.90)
+[TKT-009] [STEP] plan → ["get_order", "get_customer", "send_reply"]
+[TKT-009] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}
+[TKT-009] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": true}}
+[TKT-009] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-009] [STEP] tool_execution → {"tools_used": ["get_order", "get_customer", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-009] [STEP] response → {"message": "Your order has already been refunded."}
+[AUDIT] {"ticket_id": "TKT-009", "intent": "refund_request", "final_response": "Your order has already been refunded.", "plan": ["get_order", "get_customer", "send_reply"], "execution": {"tools_used": ["get_order", "get_customer", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "refund_request", "order_id": "ORD-1009", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-1009", "order_found": true}}, {"step": "decision", "data": {"action": "inform_already_refunded", "reason": ["Order refund_status is already 'refunded'."], "confidence": 0.9}}, {"step": "plan", "data": ["get_order", "get_customer", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": true}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_customer", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "Your order has already been refunded."}}], "decision": {"action": "inform_already_refunded", "reason": ["Order refund_status is already 'refunded'."], "confidence": 0.9}, "tools_used": ["get_order", "get_customer", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.60s"}
+[TKT-007] [STEP] understanding → {"intent": "return_request", "order_id": "ORD-1007", "has_order": true}
+[TKT-007] [STEP] order_lookup → {"order_id": "ORD-1007", "order_found": true}
+[TKT-007] [STEP] decision → {"action": "escalate_case", "reason": ["Customer has high refund frequency — manual review required."], "confidence": 0.85}
+[TKT-007] [STEP] decision → escalate_case (confidence: 0.85)
+[TKT-007] [STEP] plan → ["get_order", "get_customer", "escalate_case", "send_reply"]
+[TKT-007] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}
+[TKT-007] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": true}}
+[TKT-007] [STEP] validation → {"tool": "escalate_case", "valid": true, "error": null, "result": {"status": "escalated"}}
+[TKT-007] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-007] [STEP] tool_execution → {"tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-007] [STEP] response → {"message": "Thanks for reaching out — I’m reviewing your request."}
+[AUDIT] {"ticket_id": "TKT-007", "intent": "return_request", "final_response": "Thanks for reaching out — I’m reviewing your request.", "plan": ["get_order", "get_customer", "escalate_case", "send_reply"], "execution": {"tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "return_request", "order_id": "ORD-1007", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-1007", "order_found": true}}, {"step": "decision", "data": {"action": "escalate_case", "reason": ["Customer has high refund frequency — manual review required."], "confidence": 0.85}}, {"step": "plan", "data": ["get_order", "get_customer", "escalate_case", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": true}}}, {"step": "validation", "data": {"tool": "escalate_case", "valid": true, "error": null, "result": {"status": "escalated"}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "Thanks for reaching out — I’m reviewing your request."}}], "decision": {"action": "escalate_case", "reason": ["Customer has high refund frequency — manual review required."], "confidence": 0.85}, "tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.90s"}
+[TKT-010] [STEP] understanding → {"intent": "unknown", "order_id": "ORD-1010", "has_order": true}
+[TKT-010] [STEP] order_lookup → {"order_id": "ORD-1010", "order_found": true}
+[TKT-010] [STEP] decision → {"action": "provide_order_status", "reason": ["Order is in transit.", "Tracking ID: TRK-88291"], "confidence": 0.9}
+[TKT-010] [STEP] decision → provide_order_status (confidence: 0.90)
+[TKT-010] [STEP] plan → ["get_order", "get_customer", "send_reply"]
+[TKT-010] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}
+[TKT-010] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": true}}
+[TKT-010] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-010] [STEP] tool_execution → {"tools_used": ["get_order", "get_customer", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-010] [STEP] response → {"message": "Your order is currently in transit. Tracking ID: TRK-88291"}
+[AUDIT] {"ticket_id": "TKT-010", "intent": "unknown", "final_response": "Your order is currently in transit. Tracking ID: TRK-88291", "plan": ["get_order", "get_customer", "send_reply"], "execution": {"tools_used": ["get_order", "get_customer", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "unknown", "order_id": "ORD-1010", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-1010", "order_found": true}}, {"step": "decision", "data": {"action": "provide_order_status", "reason": ["Order is in transit.", "Tracking ID: TRK-88291"], "confidence": 0.9}}, {"step": "plan", "data": ["get_order", "get_customer", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": true}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_customer", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "Your order is currently in transit. Tracking ID: TRK-88291"}}], "decision": {"action": "provide_order_status", "reason": ["Order is in transit.", "Tracking ID: TRK-88291"], "confidence": 0.9}, "tools_used": ["get_order", "get_customer", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.84s"}
+[TKT-012] [STEP] understanding → {"intent": "cancel_request", "order_id": "ORD-1012", "has_order": true}
+[TKT-012] [STEP] order_lookup → {"order_id": "ORD-1012", "order_found": true}
+[TKT-012] [STEP] decision → {"action": "cancel_order", "reason": ["Order status is 'processing'."], "confidence": 0.93}
+[TKT-012] [STEP] decision → cancel_order (confidence: 0.93)
+[TKT-012] [STEP] plan → ["get_order", "cancel_order", "send_reply"]
+[TKT-012] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}
+[TKT-012] [STEP] validation → {"tool": "cancel_order", "valid": true, "error": null, "result": {"status": "cancelled"}}
+[TKT-012] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-012] [STEP] tool_execution → {"tools_used": ["get_order", "cancel_order", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "cancel_order", "tool_used": "cancel_order", "result": {"status": "cancelled"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-012] [STEP] response → {"message": "Your order is eligible for cancellation."}
+[AUDIT] {"ticket_id": "TKT-012", "intent": "cancel_request", "final_response": "Your order is eligible for cancellation.", "plan": ["get_order", "cancel_order", "send_reply"], "execution": {"tools_used": ["get_order", "cancel_order", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "cancel_order", "tool_used": "cancel_order", "result": {"status": "cancelled"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "cancel_request", "order_id": "ORD-1012", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-1012", "order_found": true}}, {"step": "decision", "data": {"action": "cancel_order", "reason": ["Order status is 'processing'."], "confidence": 0.93}}, {"step": "plan", "data": ["get_order", "cancel_order", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}}, {"step": "validation", "data": {"tool": "cancel_order", "valid": true, "error": null, "result": {"status": "cancelled"}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "cancel_order", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "cancel_order", "tool_used": "cancel_order", "result": {"status": "cancelled"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "Your order is eligible for cancellation."}}], "decision": {"action": "cancel_order", "reason": ["Order status is 'processing'."], "confidence": 0.93}, "tools_used": ["get_order", "cancel_order", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.99s"}
+[TKT-014] [STEP] understanding → {"intent": "return_request", "order_id": "ORD-1014", "has_order": true}
+[TKT-014] [STEP] order_lookup → {"order_id": "ORD-1014", "order_found": true}
+[TKT-014] [STEP] decision → {"action": "approve_return", "reason": ["Within return window."], "confidence": 0.93}
+[TKT-014] [STEP] decision → approve_return (confidence: 0.93)
+[TKT-014] [STEP] plan → ["get_order", "get_product", "send_reply"]
+[TKT-014] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}
+[TKT-014] [STEP] validation → {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}
+[TKT-014] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-014] [STEP] tool_execution → {"tools_used": ["get_order", "get_product", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-014] [STEP] response → {"message": "Your order is within the return window — we can help you start a return."}
+[AUDIT] {"ticket_id": "TKT-014", "intent": "return_request", "final_response": "Your order is within the return window — we can help you start a return.", "plan": ["get_order", "get_product", "send_reply"], "execution": {"tools_used": ["get_order", "get_product", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "return_request", "order_id": "ORD-1014", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-1014", "order_found": true}}, {"step": "decision", "data": {"action": "approve_return", "reason": ["Within return window."], "confidence": 0.93}}, {"step": "plan", "data": ["get_order", "get_product", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}}, {"step": "validation", "data": {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_product", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "Your order is within the return window — we can help you start a return."}}], "decision": {"action": "approve_return", "reason": ["Within return window."], "confidence": 0.93}, "tools_used": ["get_order", "get_product", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.61s"}
+[TKT-011] [STEP] understanding → {"intent": "unknown", "order_id": "ORD-1011", "has_order": true}
+[TKT-011] [STEP] order_lookup → {"order_id": "ORD-1011", "order_found": true}
+[TKT-011] [STEP] decision → {"action": "initiate_exchange", "reason": ["Customer received wrong item."], "confidence": 0.95}
+[TKT-011] [STEP] decision → initiate_exchange (confidence: 0.95)
+[TKT-011] [STEP] plan → ["get_order", "get_product", "send_reply"]
+[TKT-011] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}
+[TKT-011] [STEP] validation → {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}
+[TKT-011] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-011] [STEP] tool_execution → {"tools_used": ["get_order", "get_product", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-011] [STEP] response → {"message": "It looks like you received the wrong item. We’ll arrange an exchange or provide a refund if needed."}
+[AUDIT] {"ticket_id": "TKT-011", "intent": "unknown", "final_response": "It looks like you received the wrong item. We’ll arrange an exchange or provide a refund if needed.", "plan": ["get_order", "get_product", "send_reply"], "execution": {"tools_used": ["get_order", "get_product", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "unknown", "order_id": "ORD-1011", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-1011", "order_found": true}}, {"step": "decision", "data": {"action": "initiate_exchange", "reason": ["Customer received wrong item."], "confidence": 0.95}}, {"step": "plan", "data": ["get_order", "get_product", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}}, {"step": "validation", "data": {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_product", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "It looks like you received the wrong item. We’ll arrange an exchange or provide a refund if needed."}}], "decision": {"action": "initiate_exchange", "reason": ["Customer received wrong item."], "confidence": 0.95}, "tools_used": ["get_order", "get_product", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "1.16s"}
+[TKT-013] [STEP] understanding → {"intent": "return_request", "order_id": "ORD-1013", "has_order": true}
+[TKT-013] [STEP] order_lookup → {"order_id": "ORD-1013", "order_found": true}
+[TKT-013] [STEP] decision → {"action": "escalate_case", "reason": ["Customer has high refund frequency — manual review required."], "confidence": 0.88}
+[TKT-013] [STEP] decision → escalate_case (confidence: 0.88)
+[TKT-013] [STEP] plan → ["get_order", "get_customer", "escalate_case", "send_reply"]
+[TKT-013] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}
+[TKT-013] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": true}}
+[TKT-013] [STEP] validation → {"tool": "escalate_case", "valid": true, "error": null, "result": {"status": "escalated"}}
+[TKT-013] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-013] [STEP] tool_execution → {"tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-013] [STEP] response → {"message": "Thanks for reaching out — I’m reviewing your request."}
+[AUDIT] {"ticket_id": "TKT-013", "intent": "return_request", "final_response": "Thanks for reaching out — I’m reviewing your request.", "plan": ["get_order", "get_customer", "escalate_case", "send_reply"], "execution": {"tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "return_request", "order_id": "ORD-1013", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-1013", "order_found": true}}, {"step": "decision", "data": {"action": "escalate_case", "reason": ["Customer has high refund frequency — manual review required."], "confidence": 0.88}}, {"step": "plan", "data": ["get_order", "get_customer", "escalate_case", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": true}}}, {"step": "validation", "data": {"tool": "escalate_case", "valid": true, "error": null, "result": {"status": "escalated"}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "Thanks for reaching out — I’m reviewing your request."}}], "decision": {"action": "escalate_case", "reason": ["Customer has high refund frequency — manual review required."], "confidence": 0.88}, "tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.88s"}
+[TKT-015] [STEP] understanding → {"intent": "refund_request", "order_id": "ORD-1015", "has_order": true}
+[TKT-015] [STEP] order_lookup → {"order_id": "ORD-1015", "order_found": true}
+[TKT-015] [STEP] decision → {"action": "approve_refund", "reason": ["defective item"], "confidence": 0.95}
+[TKT-015] [STEP] decision → approve_refund (confidence: 0.95)
+[TKT-015] [STEP] plan → ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"]
+[TKT-015] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}
+[TKT-015] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": true}}
+[TKT-015] [STEP] validation → {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}
+[TKT-015] [STEP] validation → {"tool": "check_refund_eligibility", "valid": true, "error": null, "result": {"eligible": true, "reason": "Within return window"}}
+[TKT-015] [RETRY 1/3] issue_refund failed → retrying in 0.5s...
+[TKT-017] [STEP] understanding → {"intent": "refund_request", "order_id": "ORD-9999", "has_order": true}
+[TKT-017] [STEP] order_lookup → {"order_id": "ORD-9999", "order_found": false}
+[TKT-017] [STEP] decision → {"action": "invalid_order", "reason": ["Order 'ORD-9999' was not found in orders dataset."], "confidence": 0.9}
+[TKT-017] [STEP] decision → invalid_order (confidence: 0.90)
+[TKT-017] [STEP] plan → ["get_order", "get_customer", "send_reply"]
+[TKT-017] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": false}}
+[TKT-017] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}
+[TKT-017] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-017] [STEP] tool_execution → {"tools_used": ["get_order", "get_customer", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": false}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-017] [STEP] response → {"message": "I couldn’t find that order ID. Please double-check it and try again."}
+[AUDIT] {"ticket_id": "TKT-017", "intent": "refund_request", "final_response": "I couldn’t find that order ID. Please double-check it and try again.", "plan": ["get_order", "get_customer", "send_reply"], "execution": {"tools_used": ["get_order", "get_customer", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": false}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "refund_request", "order_id": "ORD-9999", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-9999", "order_found": false}}, {"step": "decision", "data": {"action": "invalid_order", "reason": ["Order 'ORD-9999' was not found in orders dataset."], "confidence": 0.9}}, {"step": "plan", "data": ["get_order", "get_customer", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": false}}}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_customer", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": false}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "I couldn’t find that order ID. Please double-check it and try again."}}], "decision": {"action": "invalid_order", "reason": ["Order 'ORD-9999' was not found in orders dataset."], "confidence": 0.9}, "tools_used": ["get_order", "get_customer", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.41s"}
+[TKT-015] [RETRY SUCCESS] issue_refund succeeded on attempt 2
+[TKT-015] [STEP] validation → {"tool": "issue_refund", "valid": true, "error": null, "result": {"status": "success", "refund_amount": 199.99}}
+[TKT-015] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-015] [STEP] tool_execution → {"tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "check_refund_eligibility", "tool_used": "check_refund_eligibility", "result": {"eligible": true, "reason": "Within return window"}}, {"step": "issue_refund", "tool_used": "issue_refund", "result": {"status": "success", "refund_amount": 199.99}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 2, "retries_total": 1, "dlq": false}
+[TKT-015] [STEP] response → {"message": "We’re sorry about the issue — your item qualifies for a refund."}
+[AUDIT] {"ticket_id": "TKT-015", "intent": "refund_request", "final_response": "We’re sorry about the issue — your item qualifies for a refund.", "plan": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "execution": {"tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "check_refund_eligibility", "tool_used": "check_refund_eligibility", "result": {"eligible": true, "reason": "Within return window"}}, {"step": "issue_refund", "tool_used": "issue_refund", "result": {"status": "success", "refund_amount": 199.99}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 2, "retries_total": 1, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "refund_request", "order_id": "ORD-1015", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-1015", "order_found": true}}, {"step": "decision", "data": {"action": "approve_refund", "reason": ["defective item"], "confidence": 0.95}}, {"step": "plan", "data": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": true}}}, {"step": "validation", "data": {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}}, {"step": "validation", "data": {"tool": "check_refund_eligibility", "valid": true, "error": null, "result": {"eligible": true, "reason": "Within return window"}}}, {"step": "validation", "data": {"tool": "issue_refund", "valid": true, "error": null, "result": {"status": "success", "refund_amount": 199.99}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "check_refund_eligibility", "tool_used": "check_refund_eligibility", "result": {"eligible": true, "reason": "Within return window"}}, {"step": "issue_refund", "tool_used": "issue_refund", "result": {"status": "success", "refund_amount": 199.99}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 2, "retries_total": 1, "dlq": false}}, {"step": "response", "data": {"message": "We’re sorry about the issue — your item qualifies for a refund."}}], "decision": {"action": "approve_refund", "reason": ["defective item"], "confidence": 0.95}, "tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "retry_attempts": 2, "retries_total": 1, "dlq": false, "final_status": "success", "processing_time": "1.20s"}
+[TKT-016] [STEP] understanding → {"intent": "refund_request", "order_id": null, "has_order": false}
+[TKT-016] [STEP] order_lookup → {"order_id": null, "order_found": false}
+[TKT-016] [STEP] decision → {"action": "ask_clarification", "reason": ["Missing order_id; need order ID to proceed."], "confidence": 0.75}
+[TKT-016] [STEP] decision → ask_clarification (confidence: 0.75)
+[TKT-016] [STEP] plan → ["get_customer", "get_order", "send_reply"]
+[TKT-016] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}
+[TKT-016] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": false}}
+[TKT-016] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-016] [STEP] tool_execution → {"tools_used": ["get_customer", "get_order", "send_reply"], "results": [{"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "get_order", "tool_used": "get_order", "result": {"order_found": false}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-016] [STEP] response → {"message": "Please provide your order ID so I can assist you."}
+[AUDIT] {"ticket_id": "TKT-016", "intent": "refund_request", "final_response": "Please provide your order ID so I can assist you.", "plan": ["get_customer", "get_order", "send_reply"], "execution": {"tools_used": ["get_customer", "get_order", "send_reply"], "results": [{"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "get_order", "tool_used": "get_order", "result": {"order_found": false}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "refund_request", "order_id": null, "has_order": false}}, {"step": "order_lookup", "data": {"order_id": null, "order_found": false}}, {"step": "decision", "data": {"action": "ask_clarification", "reason": ["Missing order_id; need order ID to proceed."], "confidence": 0.75}}, {"step": "plan", "data": ["get_customer", "get_order", "send_reply"]}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": false}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_customer", "get_order", "send_reply"], "results": [{"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "get_order", "tool_used": "get_order", "result": {"order_found": false}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "Please provide your order ID so I can assist you."}}], "decision": {"action": "ask_clarification", "reason": ["Missing order_id; need order ID to proceed."], "confidence": 0.75}, "tools_used": ["get_customer", "get_order", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.99s"}
+[TKT-019] [STEP] understanding → {"intent": "policy_query", "order_id": null, "has_order": false}
+[TKT-019] [STEP] order_lookup → {"order_id": null, "order_found": false}
+[TKT-019] [STEP] decision → {"action": "policy_query", "reason": ["User asked policy question"], "confidence": 0.9}
+[TKT-019] [STEP] decision → policy_query (confidence: 0.90)
+[TKT-019] [STEP] plan → ["get_customer", "search_knowledge_base", "send_reply"]
+[TKT-019] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}
+[TKT-019] [STEP] validation → {"tool": "search_knowledge_base", "valid": true, "error": null, "result": {"answer": "Returns allowed within product-specific return window."}}
+[TKT-019] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-019] [STEP] tool_execution → {"tools_used": ["get_customer", "search_knowledge_base", "send_reply"], "results": [{"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "search_knowledge_base", "tool_used": "search_knowledge_base", "result": {"answer": "Returns allowed within product-specific return window."}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-019] [STEP] response → {"message": "Returns allowed within product-specific return window."}
+[AUDIT] {"ticket_id": "TKT-019", "intent": "policy_query", "final_response": "Returns allowed within product-specific return window.", "plan": ["get_customer", "search_knowledge_base", "send_reply"], "execution": {"tools_used": ["get_customer", "search_knowledge_base", "send_reply"], "results": [{"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "search_knowledge_base", "tool_used": "search_knowledge_base", "result": {"answer": "Returns allowed within product-specific return window."}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "policy_query", "order_id": null, "has_order": false}}, {"step": "order_lookup", "data": {"order_id": null, "order_found": false}}, {"step": "decision", "data": {"action": "policy_query", "reason": ["User asked policy question"], "confidence": 0.9}}, {"step": "plan", "data": ["get_customer", "search_knowledge_base", "send_reply"]}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}}, {"step": "validation", "data": {"tool": "search_knowledge_base", "valid": true, "error": null, "result": {"answer": "Returns allowed within product-specific return window."}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_customer", "search_knowledge_base", "send_reply"], "results": [{"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "search_knowledge_base", "tool_used": "search_knowledge_base", "result": {"answer": "Returns allowed within product-specific return window."}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "Returns allowed within product-specific return window."}}], "decision": {"action": "policy_query", "reason": ["User asked policy question"], "confidence": 0.9}, "tools_used": ["get_customer", "search_knowledge_base", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.82s"}
+[TKT-018] [STEP] understanding → {"intent": "policy_query", "order_id": "ORD-1002", "has_order": true}
+[TKT-018] [STEP] order_lookup → {"order_id": "ORD-1002", "order_found": true}
+[TKT-018] [STEP] decision → {"action": "flag_fraud", "reason": ["Customer claimed tier 'premium' but actual tier is 'standard'."], "confidence": 0.93}
+[TKT-018] [STEP] decision → flag_fraud (confidence: 0.93)
+[TKT-018] [STEP] plan → ["get_customer", "get_order", "send_reply"]
+[TKT-018] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": true}}
+[TKT-018] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}
+[TKT-018] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-018] [STEP] tool_execution → {"tools_used": ["get_customer", "get_order", "send_reply"], "results": [{"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-018] [STEP] response → {"message": "We’re unable to process this request. Please contact support for verification."}
+[AUDIT] {"ticket_id": "TKT-018", "intent": "policy_query", "final_response": "We’re unable to process this request. Please contact support for verification.", "plan": ["get_customer", "get_order", "send_reply"], "execution": {"tools_used": ["get_customer", "get_order", "send_reply"], "results": [{"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "policy_query", "order_id": "ORD-1002", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-1002", "order_found": true}}, {"step": "decision", "data": {"action": "flag_fraud", "reason": ["Customer claimed tier 'premium' but actual tier is 'standard'."], "confidence": 0.93}}, {"step": "plan", "data": ["get_customer", "get_order", "send_reply"]}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": true}}}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_customer", "get_order", "send_reply"], "results": [{"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "We’re unable to process this request. Please contact support for verification."}}], "decision": {"action": "flag_fraud", "reason": ["Customer claimed tier 'premium' but actual tier is 'standard'."], "confidence": 0.93}, "tools_used": ["get_customer", "get_order", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "1.09s"}
+[TKT-020] [STEP] understanding → {"intent": "unknown", "order_id": null, "has_order": false}
+[TKT-020] [STEP] order_lookup → {"order_id": null, "order_found": false}
+[TKT-020] [STEP] decision → {"action": "escalate_case", "reason": ["Low confidence decision — needs manual review."], "confidence": 0.7}
+[TKT-020] [STEP] decision → escalate_case (confidence: 0.70)
+[TKT-020] [STEP] plan → ["get_order", "get_customer", "escalate_case", "send_reply"]
+[TKT-020] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": false}}
+[TKT-020] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}
+[TKT-020] [STEP] validation → {"tool": "escalate_case", "valid": true, "error": null, "result": {"status": "escalated"}}
+[TKT-020] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-020] [STEP] tool_execution → {"tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": false}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-020] [STEP] response → {"message": "Thanks for reaching out — I’m reviewing your request."}
+[AUDIT] {"ticket_id": "TKT-020", "intent": "unknown", "final_response": "Thanks for reaching out — I’m reviewing your request.", "plan": ["get_order", "get_customer", "escalate_case", "send_reply"], "execution": {"tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": false}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "unknown", "order_id": null, "has_order": false}}, {"step": "order_lookup", "data": {"order_id": null, "order_found": false}}, {"step": "decision", "data": {"action": "escalate_case", "reason": ["Low confidence decision — needs manual review."], "confidence": 0.7}}, {"step": "plan", "data": ["get_order", "get_customer", "escalate_case", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": false}}}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}}, {"step": "validation", "data": {"tool": "escalate_case", "valid": true, "error": null, "result": {"status": "escalated"}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": false}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "Thanks for reaching out — I’m reviewing your request."}}], "decision": {"action": "escalate_case", "reason": ["Low confidence decision — needs manual review."], "confidence": 0.7}, "tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.71s"}
+[TKT-021] [STEP] understanding → {"intent": "refund_request", "order_id": "ORD-FAIL", "has_order": true}
+[TKT-021] [STEP] order_lookup → {"order_id": "ORD-FAIL", "order_found": true}
+[TKT-021] [STEP] decision → {"action": "approve_refund", "reason": ["defective item"], "confidence": 0.9}
+[TKT-021] [STEP] decision → approve_refund (confidence: 0.90)
+[TKT-021] [STEP] plan → ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"]
+[TKT-021] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}
+[TKT-021] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}
+[TKT-021] [STEP] validation → {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}
+[TKT-021] [STEP] validation → {"tool": "check_refund_eligibility", "valid": true, "error": null, "result": {"eligible": true, "reason": "Within return window"}}
+[TKT-021] [RETRY 1/3] issue_refund failed → moving to DLQ
+[TKT-021] [STEP] validation → {"tool": "issue_refund", "valid": true, "error": null, "result": {"status": "failed", "error_code": "PAYMENT_TIMEOUT", "error": "Payment gateway timeout", "retryable": false, "retry_attempts": 1}}
+[TKT-021] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-021] [RETRY 1/3] escalate_case failed → retrying in 0.5s...
+[TKT-023] [STEP] understanding → {"intent": "refund_request", "order_id": "ORD-2001", "has_order": true}
+[TKT-023] [STEP] order_lookup → {"order_id": "ORD-2001", "order_found": true}
+[TKT-023] [STEP] decision → {"action": "approve_refund", "reason": ["defective item"], "confidence": 0.9}
+[TKT-023] [STEP] decision → approve_refund (confidence: 0.90)
+[TKT-023] [STEP] plan → ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"]
+[TKT-023] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}
+[TKT-023] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}
+[TKT-023] [STEP] validation → {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}
+[TKT-023] [STEP] validation → {"tool": "check_refund_eligibility", "valid": true, "error": null, "result": {"eligible": true, "reason": "Within return window"}}
+[TKT-023] [RETRY 1/3] issue_refund failed → retrying in 0.5s...
+[TKT-022] [STEP] understanding → {"intent": "refund_request", "order_id": "ORD-SUCCESS", "has_order": true}
+[TKT-022] [STEP] order_lookup → {"order_id": "ORD-SUCCESS", "order_found": true}
+[TKT-022] [STEP] decision → {"action": "approve_refund", "reason": ["defective item"], "confidence": 0.9}
+[TKT-022] [STEP] decision → approve_refund (confidence: 0.90)
+[TKT-022] [STEP] plan → ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"]
+[TKT-022] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}
+[TKT-022] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}
+[TKT-022] [STEP] validation → {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}
+[TKT-022] [STEP] validation → {"tool": "check_refund_eligibility", "valid": true, "error": null, "result": {"eligible": true, "reason": "Within return window"}}
+[TKT-022] [STEP] validation → {"tool": "issue_refund", "valid": true, "error": null, "result": {"status": "success", "refund_amount": 29.99}}
+[TKT-022] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-022] [STEP] tool_execution → {"tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "check_refund_eligibility", "tool_used": "check_refund_eligibility", "result": {"eligible": true, "reason": "Within return window"}}, {"step": "issue_refund", "tool_used": "issue_refund", "result": {"status": "success", "refund_amount": 29.99}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-022] [STEP] response → {"message": "We’re sorry about the issue — your item qualifies for a refund."}
+[AUDIT] {"ticket_id": "TKT-022", "intent": "refund_request", "final_response": "We’re sorry about the issue — your item qualifies for a refund.", "plan": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "execution": {"tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "check_refund_eligibility", "tool_used": "check_refund_eligibility", "result": {"eligible": true, "reason": "Within return window"}}, {"step": "issue_refund", "tool_used": "issue_refund", "result": {"status": "success", "refund_amount": 29.99}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "refund_request", "order_id": "ORD-SUCCESS", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-SUCCESS", "order_found": true}}, {"step": "decision", "data": {"action": "approve_refund", "reason": ["defective item"], "confidence": 0.9}}, {"step": "plan", "data": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}}, {"step": "validation", "data": {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}}, {"step": "validation", "data": {"tool": "check_refund_eligibility", "valid": true, "error": null, "result": {"eligible": true, "reason": "Within return window"}}}, {"step": "validation", "data": {"tool": "issue_refund", "valid": true, "error": null, "result": {"status": "success", "refund_amount": 29.99}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "check_refund_eligibility", "tool_used": "check_refund_eligibility", "result": {"eligible": true, "reason": "Within return window"}}, {"step": "issue_refund", "tool_used": "issue_refund", "result": {"status": "success", "refund_amount": 29.99}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "We’re sorry about the issue — your item qualifies for a refund."}}], "decision": {"action": "approve_refund", "reason": ["defective item"], "confidence": 0.9}, "tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.80s"}
+[TKT-024] [STEP] understanding → {"intent": "refund_request", "order_id": "ORD-2002", "has_order": true}
+[TKT-024] [STEP] order_lookup → {"order_id": "ORD-2002", "order_found": true}
+[TKT-024] [STEP] decision → {"action": "approve_refund", "reason": ["defective item"], "confidence": 0.9}
+[TKT-024] [STEP] decision → approve_refund (confidence: 0.90)
+[TKT-024] [STEP] plan → ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"]
+[TKT-024] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}
+[TKT-024] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}
+[TKT-024] [STEP] validation → {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}
+[TKT-024] [STEP] validation → {"tool": "check_refund_eligibility", "valid": true, "error": null, "result": {"eligible": true, "reason": "Within return window"}}
+[TKT-024] [RETRY 1/3] issue_refund failed → retrying in 0.5s...
+[TKT-025] [STEP] understanding → {"intent": "refund_request", "order_id": "ORD-ELIG", "has_order": true}
+[TKT-025] [STEP] order_lookup → {"order_id": "ORD-ELIG", "order_found": false}
+[TKT-025] [STEP] decision → {"action": "invalid_order", "reason": ["Order 'ORD-ELIG' was not found in orders dataset."], "confidence": 0.9}
+[TKT-025] [STEP] decision → invalid_order (confidence: 0.90)
+[TKT-025] [STEP] plan → ["get_order", "get_customer", "send_reply"]
+[TKT-025] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": false}}
+[TKT-025] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}
+[TKT-025] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-025] [STEP] tool_execution → {"tools_used": ["get_order", "get_customer", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": false}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-025] [STEP] response → {"message": "I couldn’t find that order ID. Please double-check it and try again."}
+[AUDIT] {"ticket_id": "TKT-025", "intent": "refund_request", "final_response": "I couldn’t find that order ID. Please double-check it and try again.", "plan": ["get_order", "get_customer", "send_reply"], "execution": {"tools_used": ["get_order", "get_customer", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": false}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "refund_request", "order_id": "ORD-ELIG", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-ELIG", "order_found": false}}, {"step": "decision", "data": {"action": "invalid_order", "reason": ["Order 'ORD-ELIG' was not found in orders dataset."], "confidence": 0.9}}, {"step": "plan", "data": ["get_order", "get_customer", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": false}}}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_customer", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": false}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "I couldn’t find that order ID. Please double-check it and try again."}}], "decision": {"action": "invalid_order", "reason": ["Order 'ORD-ELIG' was not found in orders dataset."], "confidence": 0.9}, "tools_used": ["get_order", "get_customer", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.73s"}
+[TKT-021] [RETRY 2/3] escalate_case failed → retrying in 1.0s...
+[TKT-023] [RETRY 2/3] issue_refund failed → retrying in 1.0s...
+[TKT-026] [STEP] understanding → {"intent": "refund_request", "order_id": "ORD-RISK", "has_order": true}
+[TKT-026] [STEP] order_lookup → {"order_id": "ORD-RISK", "order_found": true}
+[TKT-026] [STEP] decision → {"action": "escalate_case", "reason": ["Customer has high refund frequency — manual review required."], "confidence": 0.88}
+[TKT-026] [STEP] decision → escalate_case (confidence: 0.88)
+[TKT-026] [STEP] plan → ["get_order", "get_customer", "escalate_case", "send_reply"]
+[TKT-026] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}
+[TKT-026] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": true}}
+[TKT-026] [STEP] validation → {"tool": "escalate_case", "valid": true, "error": null, "result": {"status": "escalated"}}
+[TKT-026] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-026] [STEP] tool_execution → {"tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-026] [STEP] response → {"message": "Thanks for reaching out — I’m reviewing your request."}
+[AUDIT] {"ticket_id": "TKT-026", "intent": "refund_request", "final_response": "Thanks for reaching out — I’m reviewing your request.", "plan": ["get_order", "get_customer", "escalate_case", "send_reply"], "execution": {"tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "refund_request", "order_id": "ORD-RISK", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-RISK", "order_found": true}}, {"step": "decision", "data": {"action": "escalate_case", "reason": ["Customer has high refund frequency — manual review required."], "confidence": 0.88}}, {"step": "plan", "data": ["get_order", "get_customer", "escalate_case", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": true}}}, {"step": "validation", "data": {"tool": "escalate_case", "valid": true, "error": null, "result": {"status": "escalated"}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": true}}, {"step": "escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "Thanks for reaching out — I’m reviewing your request."}}], "decision": {"action": "escalate_case", "reason": ["Customer has high refund frequency — manual review required."], "confidence": 0.88}, "tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.45s"}
+[TKT-027] [STEP] understanding → {"intent": "refund_request", "order_id": "ORD-NOTEXIST", "has_order": true}
+[TKT-027] [STEP] order_lookup → {"order_id": "ORD-NOTEXIST", "order_found": false}
+[TKT-027] [STEP] decision → {"action": "invalid_order", "reason": ["Order 'ORD-NOTEXIST' was not found in orders dataset."], "confidence": 0.9}
+[TKT-027] [STEP] decision → invalid_order (confidence: 0.90)
+[TKT-027] [STEP] plan → ["get_order", "get_customer", "send_reply"]
+[TKT-027] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": false}}
+[TKT-027] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}
+[TKT-027] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-027] [STEP] tool_execution → {"tools_used": ["get_order", "get_customer", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": false}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-027] [STEP] response → {"message": "I couldn’t find that order ID. Please double-check it and try again."}
+[AUDIT] {"ticket_id": "TKT-027", "intent": "refund_request", "final_response": "I couldn’t find that order ID. Please double-check it and try again.", "plan": ["get_order", "get_customer", "send_reply"], "execution": {"tools_used": ["get_order", "get_customer", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": false}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "refund_request", "order_id": "ORD-NOTEXIST", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-NOTEXIST", "order_found": false}}, {"step": "decision", "data": {"action": "invalid_order", "reason": ["Order 'ORD-NOTEXIST' was not found in orders dataset."], "confidence": 0.9}}, {"step": "plan", "data": ["get_order", "get_customer", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": false}}}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_customer", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": false}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "I couldn’t find that order ID. Please double-check it and try again."}}], "decision": {"action": "invalid_order", "reason": ["Order 'ORD-NOTEXIST' was not found in orders dataset."], "confidence": 0.9}, "tools_used": ["get_order", "get_customer", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.40s"}
+[TKT-024] [RETRY SUCCESS] issue_refund succeeded on attempt 2
+[TKT-024] [STEP] validation → {"tool": "issue_refund", "valid": true, "error": null, "result": {"status": "success", "refund_amount": 59.99}}
+[TKT-024] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-024] [STEP] tool_execution → {"tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "check_refund_eligibility", "tool_used": "check_refund_eligibility", "result": {"eligible": true, "reason": "Within return window"}}, {"step": "issue_refund", "tool_used": "issue_refund", "result": {"status": "success", "refund_amount": 59.99}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 2, "retries_total": 1, "dlq": false}
+[TKT-024] [STEP] response → {"message": "We’re sorry about the issue — your item qualifies for a refund."}
+[AUDIT] {"ticket_id": "TKT-024", "intent": "refund_request", "final_response": "We’re sorry about the issue — your item qualifies for a refund.", "plan": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "execution": {"tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "check_refund_eligibility", "tool_used": "check_refund_eligibility", "result": {"eligible": true, "reason": "Within return window"}}, {"step": "issue_refund", "tool_used": "issue_refund", "result": {"status": "success", "refund_amount": 59.99}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 2, "retries_total": 1, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "refund_request", "order_id": "ORD-2002", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-2002", "order_found": true}}, {"step": "decision", "data": {"action": "approve_refund", "reason": ["defective item"], "confidence": 0.9}}, {"step": "plan", "data": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}}, {"step": "validation", "data": {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}}, {"step": "validation", "data": {"tool": "check_refund_eligibility", "valid": true, "error": null, "result": {"eligible": true, "reason": "Within return window"}}}, {"step": "validation", "data": {"tool": "issue_refund", "valid": true, "error": null, "result": {"status": "success", "refund_amount": 59.99}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "check_refund_eligibility", "tool_used": "check_refund_eligibility", "result": {"eligible": true, "reason": "Within return window"}}, {"step": "issue_refund", "tool_used": "issue_refund", "result": {"status": "success", "refund_amount": 59.99}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 2, "retries_total": 1, "dlq": false}}, {"step": "response", "data": {"message": "We’re sorry about the issue — your item qualifies for a refund."}}], "decision": {"action": "approve_refund", "reason": ["defective item"], "confidence": 0.9}, "tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "retry_attempts": 2, "retries_total": 1, "dlq": false, "final_status": "success", "processing_time": "1.21s"}
+[TKT-028] [STEP] understanding → {"intent": "return_request", "order_id": "ORD-NODATE", "has_order": true}
+[TKT-028] [STEP] order_lookup → {"order_id": "ORD-NODATE", "order_found": true}
+[TKT-028] [STEP] decision → {"action": "escalate_case", "reason": ["Low confidence decision — needs manual review."], "confidence": 0.7}
+[TKT-028] [STEP] decision → escalate_case (confidence: 0.70)
+[TKT-028] [STEP] plan → ["get_order", "get_customer", "escalate_case", "send_reply"]
+[TKT-028] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}
+[TKT-028] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}
+[TKT-028] [STEP] validation → {"tool": "escalate_case", "valid": true, "error": null, "result": {"status": "escalated"}}
+[TKT-028] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-028] [STEP] tool_execution → {"tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-028] [STEP] response → {"message": "Thanks for reaching out — I’m reviewing your request."}
+[AUDIT] {"ticket_id": "TKT-028", "intent": "return_request", "final_response": "Thanks for reaching out — I’m reviewing your request.", "plan": ["get_order", "get_customer", "escalate_case", "send_reply"], "execution": {"tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "return_request", "order_id": "ORD-NODATE", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-NODATE", "order_found": true}}, {"step": "decision", "data": {"action": "escalate_case", "reason": ["Low confidence decision — needs manual review."], "confidence": 0.7}}, {"step": "plan", "data": ["get_order", "get_customer", "escalate_case", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}}, {"step": "validation", "data": {"tool": "escalate_case", "valid": true, "error": null, "result": {"status": "escalated"}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "Thanks for reaching out — I’m reviewing your request."}}], "decision": {"action": "escalate_case", "reason": ["Low confidence decision — needs manual review."], "confidence": 0.7}, "tools_used": ["get_order", "get_customer", "escalate_case", "send_reply"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.46s"}
+[TKT-021] [RETRY 3/3] escalate_case failed → moving to DLQ
+[TKT-021] [STEP] validation → {"tool": "auto_escalate_case", "valid": true, "error": null, "result": {"status": "failed", "error_code": "RATE_LIMIT", "error": "Third-party API rate limit exceeded", "retryable": true, "retry_attempts": 3}}
+[TKT-021] [STEP] dlq → {"ticket_id": "TKT-021", "failed_step": "issue_refund", "reason": "Payment gateway timeout", "error_code": "PAYMENT_TIMEOUT", "timestamp": "2026-04-17T21:10:55.917155+00:00"}
+[TKT-021] [DLQ] Ticket moved to Dead Letter Queue
+[TKT-021] [STEP] tool_execution → {"tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply", "escalate_case"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "check_refund_eligibility", "tool_used": "check_refund_eligibility", "result": {"eligible": true, "reason": "Within return window"}}, {"step": "issue_refund", "tool_used": "issue_refund", "result": {"status": "failed", "error_code": "PAYMENT_TIMEOUT", "error": "Payment gateway timeout", "retryable": false, "retry_attempts": 1}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}, {"step": "auto_escalate_case", "tool_used": "escalate_case", "result": {"status": "failed", "error_code": "RATE_LIMIT", "error": "Third-party API rate limit exceeded", "retryable": true, "retry_attempts": 3}}], "status": "failed", "handled_by": "dlq", "retry_attempts": 3, "retries_total": 2, "dlq": true}
+[TKT-021] [STEP] response → {"message": "We’re sorry about the issue — your item qualifies for a refund."}
+[AUDIT] {"ticket_id": "TKT-021", "intent": "refund_request", "final_response": "We’re sorry about the issue — your item qualifies for a refund.", "plan": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "execution": {"tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply", "escalate_case"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "check_refund_eligibility", "tool_used": "check_refund_eligibility", "result": {"eligible": true, "reason": "Within return window"}}, {"step": "issue_refund", "tool_used": "issue_refund", "result": {"status": "failed", "error_code": "PAYMENT_TIMEOUT", "error": "Payment gateway timeout", "retryable": false, "retry_attempts": 1}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}, {"step": "auto_escalate_case", "tool_used": "escalate_case", "result": {"status": "failed", "error_code": "RATE_LIMIT", "error": "Third-party API rate limit exceeded", "retryable": true, "retry_attempts": 3}}], "status": "failed", "handled_by": "dlq", "retry_attempts": 3, "retries_total": 2, "dlq": true}, "steps": [{"step": "understanding", "data": {"intent": "refund_request", "order_id": "ORD-FAIL", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-FAIL", "order_found": true}}, {"step": "decision", "data": {"action": "approve_refund", "reason": ["defective item"], "confidence": 0.9}}, {"step": "plan", "data": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}}, {"step": "validation", "data": {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}}, {"step": "validation", "data": {"tool": "check_refund_eligibility", "valid": true, "error": null, "result": {"eligible": true, "reason": "Within return window"}}}, {"step": "validation", "data": {"tool": "issue_refund", "valid": true, "error": null, "result": {"status": "failed", "error_code": "PAYMENT_TIMEOUT", "error": "Payment gateway timeout", "retryable": false, "retry_attempts": 1}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "validation", "data": {"tool": "auto_escalate_case", "valid": true, "error": null, "result": {"status": "failed", "error_code": "RATE_LIMIT", "error": "Third-party API rate limit exceeded", "retryable": true, "retry_attempts": 3}}}, {"step": "dlq", "data": {"ticket_id": "TKT-021", "failed_step": "issue_refund", "reason": "Payment gateway timeout", "error_code": "PAYMENT_TIMEOUT", "timestamp": "2026-04-17T21:10:55.917155+00:00"}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply", "escalate_case"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "check_refund_eligibility", "tool_used": "check_refund_eligibility", "result": {"eligible": true, "reason": "Within return window"}}, {"step": "issue_refund", "tool_used": "issue_refund", "result": {"status": "failed", "error_code": "PAYMENT_TIMEOUT", "error": "Payment gateway timeout", "retryable": false, "retry_attempts": 1}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}, {"step": "auto_escalate_case", "tool_used": "escalate_case", "result": {"status": "failed", "error_code": "RATE_LIMIT", "error": "Third-party API rate limit exceeded", "retryable": true, "retry_attempts": 3}}], "status": "failed", "handled_by": "dlq", "retry_attempts": 3, "retries_total": 2, "dlq": true}}, {"step": "response", "data": {"message": "We’re sorry about the issue — your item qualifies for a refund."}}], "decision": {"action": "approve_refund", "reason": ["defective item"], "confidence": 0.9}, "tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply", "escalate_case"], "retry_attempts": 3, "retries_total": 2, "dlq": true, "final_status": "failed", "processing_time": "2.21s"}
+[TKT-023] [RETRY SUCCESS] issue_refund succeeded on attempt 3
+[TKT-023] [STEP] validation → {"tool": "issue_refund", "valid": true, "error": null, "result": {"status": "success", "refund_amount": 39.99}}
+[TKT-023] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-023] [STEP] tool_execution → {"tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "check_refund_eligibility", "tool_used": "check_refund_eligibility", "result": {"eligible": true, "reason": "Within return window"}}, {"step": "issue_refund", "tool_used": "issue_refund", "result": {"status": "success", "refund_amount": 39.99}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 3, "retries_total": 2, "dlq": false}
+[TKT-023] [STEP] response → {"message": "We’re sorry about the issue — your item qualifies for a refund."}
+[AUDIT] {"ticket_id": "TKT-023", "intent": "refund_request", "final_response": "We’re sorry about the issue — your item qualifies for a refund.", "plan": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "execution": {"tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "check_refund_eligibility", "tool_used": "check_refund_eligibility", "result": {"eligible": true, "reason": "Within return window"}}, {"step": "issue_refund", "tool_used": "issue_refund", "result": {"status": "success", "refund_amount": 39.99}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 3, "retries_total": 2, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "refund_request", "order_id": "ORD-2001", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-2001", "order_found": true}}, {"step": "decision", "data": {"action": "approve_refund", "reason": ["defective item"], "confidence": 0.9}}, {"step": "plan", "data": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}}, {"step": "validation", "data": {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}}, {"step": "validation", "data": {"tool": "check_refund_eligibility", "valid": true, "error": null, "result": {"eligible": true, "reason": "Within return window"}}}, {"step": "validation", "data": {"tool": "issue_refund", "valid": true, "error": null, "result": {"status": "success", "refund_amount": 39.99}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "check_refund_eligibility", "tool_used": "check_refund_eligibility", "result": {"eligible": true, "reason": "Within return window"}}, {"step": "issue_refund", "tool_used": "issue_refund", "result": {"status": "success", "refund_amount": 39.99}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}], "status": "success", "retry_attempts": 3, "retries_total": 2, "dlq": false}}, {"step": "response", "data": {"message": "We’re sorry about the issue — your item qualifies for a refund."}}], "decision": {"action": "approve_refund", "reason": ["defective item"], "confidence": 0.9}, "tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "retry_attempts": 3, "retries_total": 2, "dlq": false, "final_status": "success", "processing_time": "2.09s"}
+[TKT-029] [STEP] understanding → {"intent": "refund_request", "order_id": "ORD-VALFAIL", "has_order": true}
+[TKT-029] [STEP] order_lookup → {"order_id": "ORD-VALFAIL", "order_found": true}
+[TKT-029] [STEP] decision → {"action": "approve_refund", "reason": ["defective item"], "confidence": 0.9}
+[TKT-029] [STEP] decision → approve_refund (confidence: 0.90)
+[TKT-029] [STEP] plan → ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"]
+[TKT-029] [STEP] validation → {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}
+[TKT-029] [STEP] validation → {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}
+[TKT-029] [STEP] validation → {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}
+[TKT-029] [STEP] validation → {"tool": "check_refund_eligibility", "valid": true, "error": null, "result": {"eligible": true, "reason": "Within return window"}}
+[TKT-029] [RETRY 1/3] issue_refund failed → moving to DLQ
+[TKT-029] [STEP] validation → {"tool": "issue_refund", "valid": true, "error": null, "result": {"status": "failed", "error_code": "REFUND_VALIDATION_ERROR", "error": "Refund API validation error: missing transaction_id", "retryable": false, "retry_attempts": 1}}
+[TKT-029] [STEP] validation → {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}
+[TKT-029] [STEP] validation → {"tool": "auto_escalate_case", "valid": true, "error": null, "result": {"status": "escalated"}}
+[TKT-029] [STEP] tool_execution → {"tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply", "escalate_case"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "check_refund_eligibility", "tool_used": "check_refund_eligibility", "result": {"eligible": true, "reason": "Within return window"}}, {"step": "issue_refund", "tool_used": "issue_refund", "result": {"status": "handled", "error_code": "REFUND_VALIDATION_ERROR", "error": "Refund API validation error: missing transaction_id", "retryable": false, "retry_attempts": 1}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}, {"step": "auto_escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}], "status": "recovered_via_escalation", "retry_attempts": 1, "retries_total": 0, "dlq": false}
+[TKT-029] [STEP] response → {"message": "We’re sorry about the issue — your item qualifies for a refund."}
+[AUDIT] {"ticket_id": "TKT-029", "intent": "refund_request", "final_response": "We’re sorry about the issue — your item qualifies for a refund.", "plan": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"], "execution": {"tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply", "escalate_case"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "check_refund_eligibility", "tool_used": "check_refund_eligibility", "result": {"eligible": true, "reason": "Within return window"}}, {"step": "issue_refund", "tool_used": "issue_refund", "result": {"status": "handled", "error_code": "REFUND_VALIDATION_ERROR", "error": "Refund API validation error: missing transaction_id", "retryable": false, "retry_attempts": 1}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}, {"step": "auto_escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}], "status": "recovered_via_escalation", "retry_attempts": 1, "retries_total": 0, "dlq": false}, "steps": [{"step": "understanding", "data": {"intent": "refund_request", "order_id": "ORD-VALFAIL", "has_order": true}}, {"step": "order_lookup", "data": {"order_id": "ORD-VALFAIL", "order_found": true}}, {"step": "decision", "data": {"action": "approve_refund", "reason": ["defective item"], "confidence": 0.9}}, {"step": "plan", "data": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply"]}, {"step": "validation", "data": {"tool": "get_order", "valid": true, "error": null, "result": {"order_found": true}}}, {"step": "validation", "data": {"tool": "get_customer", "valid": true, "error": null, "result": {"customer_found": false}}}, {"step": "validation", "data": {"tool": "get_product", "valid": true, "error": null, "result": {"product_found": true}}}, {"step": "validation", "data": {"tool": "check_refund_eligibility", "valid": true, "error": null, "result": {"eligible": true, "reason": "Within return window"}}}, {"step": "validation", "data": {"tool": "issue_refund", "valid": true, "error": null, "result": {"status": "handled", "error_code": "REFUND_VALIDATION_ERROR", "error": "Refund API validation error: missing transaction_id", "retryable": false, "retry_attempts": 1}}}, {"step": "validation", "data": {"tool": "send_reply", "valid": true, "error": null, "result": {"status": "sent"}}}, {"step": "validation", "data": {"tool": "auto_escalate_case", "valid": true, "error": null, "result": {"status": "escalated"}}}, {"step": "tool_execution", "data": {"tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply", "escalate_case"], "results": [{"step": "get_order", "tool_used": "get_order", "result": {"order_found": true}}, {"step": "get_customer", "tool_used": "get_customer", "result": {"customer_found": false}}, {"step": "get_product", "tool_used": "get_product", "result": {"product_found": true}}, {"step": "check_refund_eligibility", "tool_used": "check_refund_eligibility", "result": {"eligible": true, "reason": "Within return window"}}, {"step": "issue_refund", "tool_used": "issue_refund", "result": {"status": "handled", "error_code": "REFUND_VALIDATION_ERROR", "error": "Refund API validation error: missing transaction_id", "retryable": false, "retry_attempts": 1}}, {"step": "send_reply", "tool_used": "send_reply", "result": {"status": "sent"}}, {"step": "auto_escalate_case", "tool_used": "escalate_case", "result": {"status": "escalated"}}], "status": "recovered_via_escalation", "retry_attempts": 1, "retries_total": 0, "dlq": false}}, {"step": "response", "data": {"message": "We’re sorry about the issue — your item qualifies for a refund."}}], "decision": {"action": "approve_refund", "reason": ["defective item"], "confidence": 0.9}, "tools_used": ["get_order", "get_customer", "get_product", "check_refund_eligibility", "issue_refund", "send_reply", "escalate_case"], "retry_attempts": 1, "retries_total": 0, "dlq": false, "final_status": "success", "processing_time": "0.91s"}
+
+=== Processing TKT-001 ===
+{
+  "decision": {
+    "action": "escalate_case",
+    "reason": [
+      "Repeated refund requests detected"
+    ],
+    "confidence": 0.9
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_customer",
+      "escalate_case",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": true
+        }
+      },
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": true
+        }
+      },
+      {
+        "step": "escalate_case",
+        "tool_used": "escalate_case",
+        "result": {
+          "status": "escalated"
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.83s",
+  "final_response": "Thanks for reaching out — I’m reviewing your request."
+}
+
+=== Processing TKT-002 ===
+{
+  "decision": {
+    "action": "reject_return",
+    "reason": [
+      "Return window expired."
+    ],
+    "confidence": 0.9
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_product",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": true
+        }
+      },
+      {
+        "step": "get_product",
+        "tool_used": "get_product",
+        "result": {
+          "product_found": true
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.54s",
+  "final_response": "This item is outside the return window and cannot be returned."
+}
+
+=== Processing TKT-003 ===
+{
+  "decision": {
+    "action": "escalate_warranty",
+    "reason": [
+      "Return window expired but warranty is still active."
+    ],
+    "confidence": 0.9
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_product",
+      "escalate_case",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": true
+        }
+      },
+      {
+        "step": "get_product",
+        "tool_used": "get_product",
+        "result": {
+          "product_found": true
+        }
+      },
+      {
+        "step": "escalate_case",
+        "tool_used": "escalate_case",
+        "result": {
+          "status": "escalated"
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.69s",
+  "final_response": "This appears to be a warranty issue — I’m escalating it to our support team."
+}
+
+=== Processing TKT-004 ===
+{
+  "decision": {
+    "action": "initiate_exchange",
+    "reason": [
+      "Customer received wrong item."
+    ],
+    "confidence": 0.9
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_product",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": true
+        }
+      },
+      {
+        "step": "get_product",
+        "tool_used": "get_product",
+        "result": {
+          "product_found": true
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.44s",
+  "final_response": "It looks like you received the wrong item. We’ll arrange an exchange or provide a refund if needed."
+}
+
+=== Processing TKT-005 ===
+{
+  "decision": {
+    "action": "approve_return_exception",
+    "reason": [
+      "Return window expired, but VIP exception applies."
+    ],
+    "confidence": 0.95
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_customer",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": true
+        }
+      },
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": true
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.50s",
+  "final_response": "We can make an exception and approve this return."
+}
+
+=== Processing TKT-006 ===
+{
+  "decision": {
+    "action": "ask_clarification",
+    "reason": [
+      "Missing order_id; need order ID to proceed."
+    ],
+    "confidence": 0.75
+  },
+  "execution": {
+    "tools_used": [
+      "get_customer",
+      "get_order",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": false
+        }
+      },
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": false
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.42s",
+  "final_response": "Please provide your order ID so I can assist you."
+}
+
+=== Processing TKT-007 ===
+{
+  "decision": {
+    "action": "escalate_case",
+    "reason": [
+      "Customer has high refund frequency — manual review required."
+    ],
+    "confidence": 0.85
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_customer",
+      "escalate_case",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": true
+        }
+      },
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": true
+        }
+      },
+      {
+        "step": "escalate_case",
+        "tool_used": "escalate_case",
+        "result": {
+          "status": "escalated"
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.90s",
+  "final_response": "Thanks for reaching out — I’m reviewing your request."
+}
+
+=== Processing TKT-008 ===
+{
+  "decision": {
+    "action": "approve_refund",
+    "reason": [
+      "defective item"
+    ],
+    "confidence": 0.9
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_customer",
+      "get_product",
+      "check_refund_eligibility",
+      "issue_refund",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": true
+        }
+      },
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": true
+        }
+      },
+      {
+        "step": "get_product",
+        "tool_used": "get_product",
+        "result": {
+          "product_found": true
+        }
+      },
+      {
+        "step": "check_refund_eligibility",
+        "tool_used": "check_refund_eligibility",
+        "result": {
+          "eligible": true,
+          "reason": "Within return window"
+        }
+      },
+      {
+        "step": "issue_refund",
+        "tool_used": "issue_refund",
+        "result": {
+          "status": "success",
+          "refund_amount": 44.99
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.44s",
+  "final_response": "We’re sorry about the issue — your item qualifies for a refund."
+}
+
+=== Processing TKT-009 ===
+{
+  "decision": {
+    "action": "inform_already_refunded",
+    "reason": [
+      "Order refund_status is already 'refunded'."
+    ],
+    "confidence": 0.9
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_customer",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": true
+        }
+      },
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": true
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.60s",
+  "final_response": "Your order has already been refunded."
+}
+
+=== Processing TKT-010 ===
+{
+  "decision": {
+    "action": "provide_order_status",
+    "reason": [
+      "Order is in transit.",
+      "Tracking ID: TRK-88291"
+    ],
+    "confidence": 0.9
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_customer",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": true
+        }
+      },
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": true
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.84s",
+  "final_response": "Your order is currently in transit. Tracking ID: TRK-88291"
+}
+
+=== Processing TKT-011 ===
+{
+  "decision": {
+    "action": "initiate_exchange",
+    "reason": [
+      "Customer received wrong item."
+    ],
+    "confidence": 0.95
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_product",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": true
+        }
+      },
+      {
+        "step": "get_product",
+        "tool_used": "get_product",
+        "result": {
+          "product_found": true
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "1.16s",
+  "final_response": "It looks like you received the wrong item. We’ll arrange an exchange or provide a refund if needed."
+}
+
+=== Processing TKT-012 ===
+{
+  "decision": {
+    "action": "cancel_order",
+    "reason": [
+      "Order status is 'processing'."
+    ],
+    "confidence": 0.93
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "cancel_order",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": true
+        }
+      },
+      {
+        "step": "cancel_order",
+        "tool_used": "cancel_order",
+        "result": {
+          "status": "cancelled"
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.99s",
+  "final_response": "Your order is eligible for cancellation."
+}
+
+=== Processing TKT-013 ===
+{
+  "decision": {
+    "action": "escalate_case",
+    "reason": [
+      "Customer has high refund frequency — manual review required."
+    ],
+    "confidence": 0.88
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_customer",
+      "escalate_case",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": true
+        }
+      },
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": true
+        }
+      },
+      {
+        "step": "escalate_case",
+        "tool_used": "escalate_case",
+        "result": {
+          "status": "escalated"
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.88s",
+  "final_response": "Thanks for reaching out — I’m reviewing your request."
+}
+
+=== Processing TKT-014 ===
+{
+  "decision": {
+    "action": "approve_return",
+    "reason": [
+      "Within return window."
+    ],
+    "confidence": 0.93
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_product",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": true
+        }
+      },
+      {
+        "step": "get_product",
+        "tool_used": "get_product",
+        "result": {
+          "product_found": true
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.61s",
+  "final_response": "Your order is within the return window — we can help you start a return."
+}
+
+=== Processing TKT-015 ===
+{
+  "decision": {
+    "action": "approve_refund",
+    "reason": [
+      "defective item"
+    ],
+    "confidence": 0.95
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_customer",
+      "get_product",
+      "check_refund_eligibility",
+      "issue_refund",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": true
+        }
+      },
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": true
+        }
+      },
+      {
+        "step": "get_product",
+        "tool_used": "get_product",
+        "result": {
+          "product_found": true
+        }
+      },
+      {
+        "step": "check_refund_eligibility",
+        "tool_used": "check_refund_eligibility",
+        "result": {
+          "eligible": true,
+          "reason": "Within return window"
+        }
+      },
+      {
+        "step": "issue_refund",
+        "tool_used": "issue_refund",
+        "result": {
+          "status": "success",
+          "refund_amount": 199.99
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 2,
+    "retries_total": 1,
+    "dlq": false
+  },
+  "processing_time": "1.20s",
+  "final_response": "We’re sorry about the issue — your item qualifies for a refund."
+}
+
+=== Processing TKT-016 ===
+{
+  "decision": {
+    "action": "ask_clarification",
+    "reason": [
+      "Missing order_id; need order ID to proceed."
+    ],
+    "confidence": 0.75
+  },
+  "execution": {
+    "tools_used": [
+      "get_customer",
+      "get_order",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": false
+        }
+      },
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": false
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.99s",
+  "final_response": "Please provide your order ID so I can assist you."
+}
+
+=== Processing TKT-017 ===
+{
+  "decision": {
+    "action": "invalid_order",
+    "reason": [
+      "Order 'ORD-9999' was not found in orders dataset."
+    ],
+    "confidence": 0.9
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_customer",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": false
+        }
+      },
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": false
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.41s",
+  "final_response": "I couldn’t find that order ID. Please double-check it and try again."
+}
+
+=== Processing TKT-018 ===
+{
+  "decision": {
+    "action": "flag_fraud",
+    "reason": [
+      "Customer claimed tier 'premium' but actual tier is 'standard'."
+    ],
+    "confidence": 0.93
+  },
+  "execution": {
+    "tools_used": [
+      "get_customer",
+      "get_order",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": true
+        }
+      },
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": true
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "1.09s",
+  "final_response": "We’re unable to process this request. Please contact support for verification."
+}
+
+=== Processing TKT-019 ===
+{
+  "decision": {
+    "action": "policy_query",
+    "reason": [
+      "User asked policy question"
+    ],
+    "confidence": 0.9
+  },
+  "execution": {
+    "tools_used": [
+      "get_customer",
+      "search_knowledge_base",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": false
+        }
+      },
+      {
+        "step": "search_knowledge_base",
+        "tool_used": "search_knowledge_base",
+        "result": {
+          "answer": "Returns allowed within product-specific return window."
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.82s",
+  "final_response": "Returns allowed within product-specific return window."
+}
+
+=== Processing TKT-020 ===
+{
+  "decision": {
+    "action": "escalate_case",
+    "reason": [
+      "Low confidence decision — needs manual review."
+    ],
+    "confidence": 0.7
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_customer",
+      "escalate_case",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": false
+        }
+      },
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": false
+        }
+      },
+      {
+        "step": "escalate_case",
+        "tool_used": "escalate_case",
+        "result": {
+          "status": "escalated"
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.71s",
+  "final_response": "Thanks for reaching out — I’m reviewing your request."
+}
+
+=== Processing TKT-021 ===
+{
+  "decision": {
+    "action": "approve_refund",
+    "reason": [
+      "defective item"
+    ],
+    "confidence": 0.9
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_customer",
+      "get_product",
+      "check_refund_eligibility",
+      "issue_refund",
+      "send_reply",
+      "escalate_case"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": true
+        }
+      },
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": false
+        }
+      },
+      {
+        "step": "get_product",
+        "tool_used": "get_product",
+        "result": {
+          "product_found": true
+        }
+      },
+      {
+        "step": "check_refund_eligibility",
+        "tool_used": "check_refund_eligibility",
+        "result": {
+          "eligible": true,
+          "reason": "Within return window"
+        }
+      },
+      {
+        "step": "issue_refund",
+        "tool_used": "issue_refund",
+        "result": {
+          "status": "failed",
+          "error_code": "PAYMENT_TIMEOUT",
+          "error": "Payment gateway timeout",
+          "retryable": false,
+          "retry_attempts": 1
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      },
+      {
+        "step": "auto_escalate_case",
+        "tool_used": "escalate_case",
+        "result": {
+          "status": "failed",
+          "error_code": "RATE_LIMIT",
+          "error": "Third-party API rate limit exceeded",
+          "retryable": true,
+          "retry_attempts": 3
+        }
+      }
+    ],
+    "status": "failed",
+    "handled_by": "dlq",
+    "retry_attempts": 3,
+    "retries_total": 2,
+    "dlq": true
+  },
+  "processing_time": "2.21s",
+  "final_response": "We’re sorry about the issue — your item qualifies for a refund."
+}
+
+=== Processing TKT-022 ===
+{
+  "decision": {
+    "action": "approve_refund",
+    "reason": [
+      "defective item"
+    ],
+    "confidence": 0.9
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_customer",
+      "get_product",
+      "check_refund_eligibility",
+      "issue_refund",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": true
+        }
+      },
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": false
+        }
+      },
+      {
+        "step": "get_product",
+        "tool_used": "get_product",
+        "result": {
+          "product_found": true
+        }
+      },
+      {
+        "step": "check_refund_eligibility",
+        "tool_used": "check_refund_eligibility",
+        "result": {
+          "eligible": true,
+          "reason": "Within return window"
+        }
+      },
+      {
+        "step": "issue_refund",
+        "tool_used": "issue_refund",
+        "result": {
+          "status": "success",
+          "refund_amount": 29.99
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.80s",
+  "final_response": "We’re sorry about the issue — your item qualifies for a refund."
+}
+
+=== Processing TKT-023 ===
+{
+  "decision": {
+    "action": "approve_refund",
+    "reason": [
+      "defective item"
+    ],
+    "confidence": 0.9
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_customer",
+      "get_product",
+      "check_refund_eligibility",
+      "issue_refund",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": true
+        }
+      },
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": false
+        }
+      },
+      {
+        "step": "get_product",
+        "tool_used": "get_product",
+        "result": {
+          "product_found": true
+        }
+      },
+      {
+        "step": "check_refund_eligibility",
+        "tool_used": "check_refund_eligibility",
+        "result": {
+          "eligible": true,
+          "reason": "Within return window"
+        }
+      },
+      {
+        "step": "issue_refund",
+        "tool_used": "issue_refund",
+        "result": {
+          "status": "success",
+          "refund_amount": 39.99
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 3,
+    "retries_total": 2,
+    "dlq": false
+  },
+  "processing_time": "2.09s",
+  "final_response": "We’re sorry about the issue — your item qualifies for a refund."
+}
+
+=== Processing TKT-024 ===
+{
+  "decision": {
+    "action": "approve_refund",
+    "reason": [
+      "defective item"
+    ],
+    "confidence": 0.9
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_customer",
+      "get_product",
+      "check_refund_eligibility",
+      "issue_refund",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": true
+        }
+      },
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": false
+        }
+      },
+      {
+        "step": "get_product",
+        "tool_used": "get_product",
+        "result": {
+          "product_found": true
+        }
+      },
+      {
+        "step": "check_refund_eligibility",
+        "tool_used": "check_refund_eligibility",
+        "result": {
+          "eligible": true,
+          "reason": "Within return window"
+        }
+      },
+      {
+        "step": "issue_refund",
+        "tool_used": "issue_refund",
+        "result": {
+          "status": "success",
+          "refund_amount": 59.99
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 2,
+    "retries_total": 1,
+    "dlq": false
+  },
+  "processing_time": "1.21s",
+  "final_response": "We’re sorry about the issue — your item qualifies for a refund."
+}
+
+=== Processing TKT-025 ===
+{
+  "decision": {
+    "action": "invalid_order",
+    "reason": [
+      "Order 'ORD-ELIG' was not found in orders dataset."
+    ],
+    "confidence": 0.9
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_customer",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": false
+        }
+      },
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": false
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.73s",
+  "final_response": "I couldn’t find that order ID. Please double-check it and try again."
+}
+
+=== Processing TKT-026 ===
+{
+  "decision": {
+    "action": "escalate_case",
+    "reason": [
+      "Customer has high refund frequency — manual review required."
+    ],
+    "confidence": 0.88
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_customer",
+      "escalate_case",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": true
+        }
+      },
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": true
+        }
+      },
+      {
+        "step": "escalate_case",
+        "tool_used": "escalate_case",
+        "result": {
+          "status": "escalated"
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.45s",
+  "final_response": "Thanks for reaching out — I’m reviewing your request."
+}
+
+=== Processing TKT-027 ===
+{
+  "decision": {
+    "action": "invalid_order",
+    "reason": [
+      "Order 'ORD-NOTEXIST' was not found in orders dataset."
+    ],
+    "confidence": 0.9
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_customer",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": false
+        }
+      },
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": false
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.40s",
+  "final_response": "I couldn’t find that order ID. Please double-check it and try again."
+}
+
+=== Processing TKT-028 ===
+{
+  "decision": {
+    "action": "escalate_case",
+    "reason": [
+      "Low confidence decision — needs manual review."
+    ],
+    "confidence": 0.7
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_customer",
+      "escalate_case",
+      "send_reply"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": true
+        }
+      },
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": false
+        }
+      },
+      {
+        "step": "escalate_case",
+        "tool_used": "escalate_case",
+        "result": {
+          "status": "escalated"
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      }
+    ],
+    "status": "success",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.46s",
+  "final_response": "Thanks for reaching out — I’m reviewing your request."
+}
+
+=== Processing TKT-029 ===
+{
+  "decision": {
+    "action": "approve_refund",
+    "reason": [
+      "defective item"
+    ],
+    "confidence": 0.9
+  },
+  "execution": {
+    "tools_used": [
+      "get_order",
+      "get_customer",
+      "get_product",
+      "check_refund_eligibility",
+      "issue_refund",
+      "send_reply",
+      "escalate_case"
+    ],
+    "results": [
+      {
+        "step": "get_order",
+        "tool_used": "get_order",
+        "result": {
+          "order_found": true
+        }
+      },
+      {
+        "step": "get_customer",
+        "tool_used": "get_customer",
+        "result": {
+          "customer_found": false
+        }
+      },
+      {
+        "step": "get_product",
+        "tool_used": "get_product",
+        "result": {
+          "product_found": true
+        }
+      },
+      {
+        "step": "check_refund_eligibility",
+        "tool_used": "check_refund_eligibility",
+        "result": {
+          "eligible": true,
+          "reason": "Within return window"
+        }
+      },
+      {
+        "step": "issue_refund",
+        "tool_used": "issue_refund",
+        "result": {
+          "status": "handled",
+          "error_code": "REFUND_VALIDATION_ERROR",
+          "error": "Refund API validation error: missing transaction_id",
+          "retryable": false,
+          "retry_attempts": 1
+        }
+      },
+      {
+        "step": "send_reply",
+        "tool_used": "send_reply",
+        "result": {
+          "status": "sent"
+        }
+      },
+      {
+        "step": "auto_escalate_case",
+        "tool_used": "escalate_case",
+        "result": {
+          "status": "escalated"
+        }
+      }
+    ],
+    "status": "recovered_via_escalation",
+    "retry_attempts": 1,
+    "retries_total": 0,
+    "dlq": false
+  },
+  "processing_time": "0.91s",
+  "final_response": "We’re sorry about the issue — your item qualifies for a refund."
+}
+
+Wrote audit_log.json (29 records)
+
+=== SYSTEM METRICS ===
+Total Tickets: 29
+Success: 28
+Failed: 1
+DLQ: 1
+Total Retries: 6
+Success Rate: 97%
+Avg Processing Time: 0.84s
+Avg Retries per Ticket: 0.21
