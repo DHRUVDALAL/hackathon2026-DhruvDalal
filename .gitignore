@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.env
+venv/
+node_modules/
+.DS_Store
+audit_log.json
+full_run_log.txt
+final_submission_log.txt

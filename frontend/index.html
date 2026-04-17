@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Customer Support Resolution System — Ops Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <!-- Top Navbar -->
+      <header class="topnav">
+        <div class="topnav__left">
+          <div class="topnav__logo" aria-hidden="true">
+            <i class="fa-solid fa-layer-group"></i>
+          </div>
+          <div>
+            <div class="topnav__title">AI Customer Support Resolution System</div>
+            <div class="topnav__subtitle">Multi-Agent AI Support Automation Dashboard</div>
+          </div>
+        </div>
+
+        <div class="topnav__right">
+          <div class="topnav__pills">
+            <span class="status-pill status-pill--success" title="System status">
+              <span class="status-pill__dot"></span>
+              System Status: <b>Active</b>
+            </span>
+            <span class="status-pill status-pill--info" title="Success rate">
+              <i class="fa-solid fa-chart-line"></i>
+              Success Rate: <b id="navSuccessRate">—</b>
+            </span>
+          </div>
+
+          <button class="btn btn-primary btn-sm" id="btnReload" type="button">
+            <i class="fa-solid fa-rotate"></i>
+            Refresh
+          </button>
+        </div>
+      </header>
+
+      <div class="shell">
+        <!-- Left Nav -->
+        <aside class="sidenav">
+          <div class="sidenav__section">
+            <div class="sidenav__label">Navigation</div>
+            <nav class="nav flex-column" id="nav">
+              <a class="nav-link active" href="#home"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+              <a class="nav-link" href="#tickets"><i class="fa-solid fa-ticket"></i> Tickets</a>
+              <a class="nav-link" href="#retry"><i class="fa-solid fa-rotate"></i> Retry Demo</a>
+              <a class="nav-link" href="#dlq"><i class="fa-solid fa-inbox"></i> DLQ Demo</a>
+              <a class="nav-link" href="#audit"><i class="fa-solid fa-list-check"></i> Audit Trail</a>
+              <a class="nav-link" href="#architecture"><i class="fa-solid fa-diagram-project"></i> Architecture</a>
+              <a class="nav-link" href="#metrics"><i class="fa-solid fa-chart-simple"></i> Executive Summary</a>
+            </nav>
+          </div>
+
+          <div class="sidenav__section sidenav__meta">
+            <div class="sidenav__label">Data</div>
+            <div class="meta-row">
+              <i class="fa-solid fa-database"></i>
+              <span class="text-truncate" id="dataSource">assets/sample-data.json</span>
+            </div>
+            <div class="meta-hint">Tip: run <code>npx live-server</code> inside <code>frontend/</code></div>
+          </div>
+        </aside>
+
+        <!-- Main -->
+        <main class="page">
+          <!-- Dashboard -->
+          <section id="home" class="section">
+            <div class="section__head">
+              <div>
+                <h2 class="section__title">Dashboard</h2>
+                <div class="section__subtitle">Operational health snapshot</div>
+              </div>
+              <div class="section__actions">
+                <span class="muted">Demo data • backend unchanged</span>
+              </div>
+            </div>
+
+            <div class="kpi-grid">
+              <div class="kpi-card">
+                <div class="kpi-card__top">
+                  <div class="kpi-ic kpi-ic--blue"><i class="fa-solid fa-ticket"></i></div>
+                  <span class="kpi-badge">Tickets</span>
+                </div>
+                <div class="kpi-card__label">Total Tickets</div>
+                <div class="kpi-card__value" id="kpiTotal">—</div>
+              </div>
+
+              <div class="kpi-card">
+                <div class="kpi-card__top">
+                  <div class="kpi-ic kpi-ic--green"><i class="fa-solid fa-circle-check"></i></div>
+                  <span class="kpi-badge kpi-badge--success">Healthy</span>
+                </div>
+                <div class="kpi-card__label">Resolved</div>
+                <div class="kpi-card__value" id="kpiResolved">—</div>
+              </div>
+
+              <div class="kpi-card">
+                <div class="kpi-card__top">
+                  <div class="kpi-ic kpi-ic--amber"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                  <span class="kpi-badge kpi-badge--warn">Attention</span>
+                </div>
+                <div class="kpi-card__label">Failed</div>
+                <div class="kpi-card__value" id="kpiFailed">—</div>
+              </div>
+
+              <div class="kpi-card">
+                <div class="kpi-card__top">
+                  <div class="kpi-ic kpi-ic--red"><i class="fa-solid fa-inbox"></i></div>
+                  <span class="kpi-badge kpi-badge--danger">DLQ</span>
+                </div>
+                <div class="kpi-card__label">Dead Letter Queue</div>
+                <div class="kpi-card__value" id="kpiDLQ">—</div>
+              </div>
+
+              <div class="kpi-card">
+                <div class="kpi-card__top">
+                  <div class="kpi-ic kpi-ic--blue"><i class="fa-solid fa-rotate"></i></div>
+                  <span class="kpi-badge">Resilience</span>
+                </div>
+                <div class="kpi-card__label">Total Retries</div>
+                <div class="kpi-card__value" id="kpiRetries">—</div>
+              </div>
+
+              <div class="kpi-card">
+                <div class="kpi-card__top">
+                  <div class="kpi-ic kpi-ic--blue"><i class="fa-solid fa-stopwatch"></i></div>
+                  <span class="kpi-badge">Performance</span>
+                </div>
+                <div class="kpi-card__label">Avg Processing Time</div>
+                <div class="kpi-card__value" id="kpiAvgTime">—</div>
+              </div>
+
+              <div class="kpi-card">
+                <div class="kpi-card__top">
+                  <div class="kpi-ic kpi-ic--blue"><i class="fa-solid fa-chart-line"></i></div>
+                  <span class="kpi-badge">Quality</span>
+                </div>
+                <div class="kpi-card__label">Success Rate</div>
+                <div class="kpi-card__value" id="kpiSuccessRate">—</div>
+              </div>
+            </div>
+
+            <div class="row g-3 mt-1">
+              <div class="col-12 col-xl-7">
+                <div class="panel">
+                  <div class="panel__head">
+                    <div>
+                      <div class="panel__title">Outcomes</div>
+                      <div class="panel__subtitle">Success vs Failed vs DLQ</div>
+                    </div>
+                    <span class="chip"><i class="fa-solid fa-chart-pie"></i> Summary</span>
+                  </div>
+                  <div class="panel__body">
+                    <canvas id="chartOutcome" height="120"></canvas>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-xl-5">
+                <div class="panel">
+                  <div class="panel__head">
+                    <div>
+                      <div class="panel__title">Performance</div>
+                      <div class="panel__subtitle">Retries & processing time</div>
+                    </div>
+                    <span class="chip"><i class="fa-solid fa-stopwatch"></i> Latency</span>
+                  </div>
+                  <div class="panel__body">
+                    <canvas id="chartPerf" height="160"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Tickets -->
+          <section id="tickets" class="section">
+            <div class="section__head">
+              <div>
+                <h2 class="section__title">Tickets</h2>
+                <div class="section__subtitle">Key fields first. Open a ticket for full details.</div>
+              </div>
+              <div class="section__actions d-flex gap-2">
+                <input class="form-control form-control-sm" id="ticketSearch" placeholder="Search ticket id / intent / decision…" />
+                <select class="form-select form-select-sm" id="statusFilter">
+                  <option value="all" selected>All</option>
+                  <option value="success">Resolved</option>
+                  <option value="failed">Failed</option>
+                  <option value="dlq">DLQ</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="panel">
+              <div class="panel__head">
+                <div>
+                  <div class="panel__title">Ticket Processing View</div>
+                  <div class="panel__subtitle">Ticket ID • intent • decision • status • confidence • retries</div>
+                </div>
+                <span class="chip"><i class="fa-solid fa-magnifying-glass"></i> Click row for details</span>
+              </div>
+              <div class="panel__body p-0">
+                <div class="table-responsive">
+                  <table class="table table-hover align-middle mb-0 table-clean">
+                    <thead>
+                      <tr>
+                        <th>Ticket</th>
+                        <th>Intent</th>
+                        <th>Final Decision</th>
+                        <th class="text-end">Confidence</th>
+                        <th class="text-end">Retries</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody id="ticketTable"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Retry Demo -->
+          <section id="retry" class="section">
+            <div class="section__head">
+              <div>
+                <h2 class="section__title">Retry Demo</h2>
+                <div class="section__subtitle">TKT‑023 • exponential backoff • success after retries</div>
+              </div>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-12 col-xl-7">
+                <div class="panel">
+                  <div class="panel__head">
+                    <div>
+                      <div class="panel__title">Retry Timeline</div>
+                      <div class="panel__subtitle">Attempt 1 → 2 → 3</div>
+                    </div>
+                    <span class="chip chip--blue"><i class="fa-solid fa-rotate"></i> Retry Engine</span>
+                  </div>
+                  <div class="panel__body">
+                    <div id="retryTimeline" class="vstepper"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-xl-5">
+                <div class="panel">
+                  <div class="panel__head">
+                    <div>
+                      <div class="panel__title">Executive Summary</div>
+                      <div class="panel__subtitle">What judges should notice</div>
+                    </div>
+                    <span class="chip"><i class="fa-solid fa-star"></i> Highlight</span>
+                  </div>
+                  <div class="panel__body" id="retrySummary"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- DLQ Demo -->
+          <section id="dlq" class="section">
+            <div class="section__head">
+              <div>
+                <h2 class="section__title">DLQ Demo</h2>
+                <div class="section__subtitle">TKT‑021 • strict failure schema • incident-style panel</div>
+              </div>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-12 col-xl-6">
+                <div class="panel">
+                  <div class="panel__head">
+                    <div>
+                      <div class="panel__title">Incident Summary</div>
+                      <div class="panel__subtitle">Failure → escalation → DLQ</div>
+                    </div>
+                    <span class="chip chip--danger"><i class="fa-solid fa-inbox"></i> Dead Letter Queue</span>
+                  </div>
+                  <div class="panel__body">
+                    <div id="dlqSummary" class="incident"></div>
+                    <div class="mt-3 vstepper" id="dlqTimeline"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-xl-6">
+                <div class="panel">
+                  <div class="panel__head">
+                    <div>
+                      <div class="panel__title">Failure Payload</div>
+                      <div class="panel__subtitle">Strict error fields: status, error_code, error, retryable</div>
+                    </div>
+                    <span class="chip"><i class="fa-solid fa-code"></i> JSON</span>
+                  </div>
+                  <div class="panel__body">
+                    <pre class="codeblock" id="dlqPayload"></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Audit -->
+          <section id="audit" class="section">
+            <div class="section__head">
+              <div>
+                <h2 class="section__title">Audit Trail</h2>
+                <div class="section__subtitle">Pipeline view + expandable step payloads</div>
+              </div>
+              <div class="section__actions d-flex gap-2 align-items-center">
+                <select class="form-select form-select-sm" id="auditTicketSelect"></select>
+                <button class="btn btn-outline-primary btn-sm" id="btnRenderAudit" type="button">
+                  Render
+                </button>
+              </div>
+            </div>
+
+            <div class="panel">
+              <div class="panel__head">
+                <div>
+                  <div class="panel__title">Execution Pipeline</div>
+                  <div class="panel__subtitle">Understanding → Decision → Validation → Execution → Retry → Outcome</div>
+                </div>
+                <span class="chip"><i class="fa-solid fa-shield-check"></i> Auditable</span>
+              </div>
+              <div class="panel__body">
+                <div id="auditPipeline" class="pipeline"></div>
+                <div class="mt-3" id="auditDetails"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Architecture -->
+          <section id="architecture" class="section">
+            <div class="section__head">
+              <div>
+                <h2 class="section__title">Architecture</h2>
+                <div class="section__subtitle">Clean, judge-friendly system overview</div>
+              </div>
+            </div>
+
+            <div class="panel">
+              <div class="panel__head">
+                <div>
+                  <div class="panel__title">End-to-End Orchestration</div>
+                  <div class="panel__subtitle">Agents + layers • no external APIs in demo</div>
+                </div>
+                <span class="chip chip--blue"><i class="fa-solid fa-diagram-project"></i> Flow</span>
+              </div>
+              <div class="panel__body">
+                <div id="archDiagram" class="arch-flow"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Executive Summary -->
+          <section id="metrics" class="section">
+            <div class="section__head">
+              <div>
+                <h2 class="section__title">Executive Summary</h2>
+                <div class="section__subtitle">Final system metrics snapshot (demo closing screen)</div>
+              </div>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-12 col-xl-5">
+                <div class="panel">
+                  <div class="panel__head">
+                    <div>
+                      <div class="panel__title">System Metrics</div>
+                      <div class="panel__subtitle">Investor-demo quality summary</div>
+                    </div>
+                    <span class="chip chip--success"><i class="fa-solid fa-trophy"></i> Submission-ready</span>
+                  </div>
+                  <div class="panel__body" id="metricsPanel"></div>
+                </div>
+              </div>
+              <div class="col-12 col-xl-7">
+                <div class="panel">
+                  <div class="panel__head">
+                    <div>
+                      <div class="panel__title">Tickets by Intent</div>
+                      <div class="panel__subtitle">Operational distribution</div>
+                    </div>
+                    <span class="chip"><i class="fa-solid fa-chart-column"></i> Breakdown</span>
+                  </div>
+                  <div class="panel__body">
+                    <canvas id="chartIntent" height="160"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <footer class="footer">
+            <span class="muted">Frontend demo only • backend logic unchanged</span>
+          </footer>
+        </main>
+      </div>
+
+      <!-- Ticket Drawer -->
+      <div class="drawer" id="ticketDrawer" aria-hidden="true">
+        <div class="drawer__overlay" id="ticketDrawerOverlay"></div>
+        <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Ticket details">
+          <div class="drawer__head">
+            <div>
+              <div class="drawer__title" id="ticketDrawerTitle">Ticket</div>
+              <div class="drawer__subtitle" id="ticketDrawerSubtitle">—</div>
+            </div>
+            <button class="icon-btn" id="ticketDrawerClose" type="button" aria-label="Close">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="drawer__body" id="ticketDrawerBody"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
